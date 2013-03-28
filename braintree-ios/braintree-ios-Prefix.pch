@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'braintree-ios' target in the 'braintree-ios' project
-//
-
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-#endif
