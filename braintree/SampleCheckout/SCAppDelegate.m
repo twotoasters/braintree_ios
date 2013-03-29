@@ -61,7 +61,7 @@
         [[VTClient alloc] initWithMerchantID:BT_SANDBOX_MERCHANT_ID braintreePublicEncryptionKey:BT_SANDBOX_PUBLIC_ENCRYPTION_KEY]; // init sharedClient
         
     } else {
-        
+        [[VTClient alloc] initWithMerchantID:BT_PRODUCTION_MERCHANT_ID braintreePublicEncryptionKey:BT_PRODUCTION_PUBLIC_ENCRYPTION_KEY]; // init sharedClient
     }
 }
 

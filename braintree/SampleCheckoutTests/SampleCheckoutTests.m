@@ -32,7 +32,8 @@
     NSLog(@"BT_ENVIRONMENT: %@", BT_ENVIRONMENT);
     
     STAssertEqualObjects(BT_ENVIRONMENT, @"sandbox", @"Environment should be sandbox");
-    STAssertFalse([BT_SANDBOX_MERCHANT_ID isEqualToString:@"your_merchant_id"], @"Merchant id should be set to something other than 'your_merchant_id'");
+    STAssertFalse([BT_SANDBOX_MERCHANT_ID isEqualToString:@"your_sandbox_merchant_id"], @"Merchant id should be set to something other than 'your_sandbox_merchant_id'");
+    STAssertFalse([BT_PRODUCTION_MERCHANT_ID isEqualToString:@"your_production_merchant_id"], @"Merchant id should be set to something other than 'your_production_merchant_id'");
 
 }
 
