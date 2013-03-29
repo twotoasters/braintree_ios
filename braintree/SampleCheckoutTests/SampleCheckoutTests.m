@@ -28,7 +28,10 @@
 - (void)testExample
 {
     NSLog(@"BT_MERCHANT_ID: %@", BT_MERCHANT_ID);
-    STFail(@"Unit tests are not implemented yet in SampleCheckoutTests");
+    NSLog(@"BT_PUBLIC_ENCRYPTION_KEY: %@", BT_PUBLIC_ENCRYPTION_KEY);
+    NSLog(@"BT_ENVIRONMENT: %@", BT_ENVIRONMENT);
+    
+    STAssertEqualObjects(BT_ENVIRONMENT, @"sandbox", @"Environment should be sandbox");
 }
 
 @end
