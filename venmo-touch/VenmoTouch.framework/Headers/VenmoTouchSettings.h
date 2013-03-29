@@ -13,8 +13,8 @@
 # include "VenmoTouchSettings_gitignored.h"
 #else
 
-#define BT_MERCHANT_ID @"your_merchant_id"
-#define BT_PUBLIC_ENCRYPTION_KEY @"your_public_encryption_key
+#define BT_SANDBOX_MERCHANT_ID @"your_merchant_id"
+#define BT_SANDBOX_PUBLIC_ENCRYPTION_KEY @"your_public_encryption_key
 #define BT_ENVIRONMENT @"sandbox"
 
 #endif

@@ -7,7 +7,7 @@
 //
 
 #import "SampleCheckoutTests.h"
-#import <VenmoTouch/VenmoTouchSettings.h>
+#import <VenmoTouch/VenmoTouch.h>
 
 @implementation SampleCheckoutTests
 
@@ -27,12 +27,12 @@
 
 - (void)testExample
 {
-    NSLog(@"BT_MERCHANT_ID: %@", BT_MERCHANT_ID);
-    NSLog(@"BT_PUBLIC_ENCRYPTION_KEY: %@", BT_PUBLIC_ENCRYPTION_KEY);
+    NSLog(@"BT_SANDBOX_MERCHANT_ID: %@", BT_SANDBOX_MERCHANT_ID);
+    NSLog(@"BT_SANDBOX_PUBLIC_ENCRYPTION_KEY: %@", BT_SANDBOX_PUBLIC_ENCRYPTION_KEY);
     NSLog(@"BT_ENVIRONMENT: %@", BT_ENVIRONMENT);
     
     STAssertEqualObjects(BT_ENVIRONMENT, @"sandbox", @"Environment should be sandbox");
-    STAssertFalse([BT_MERCHANT_ID isEqualToString:@"your_merchant_id"], @"Merchant id should be set to something other than 'your_merchant_id'");
+    STAssertFalse([BT_SANDBOX_MERCHANT_ID isEqualToString:@"your_merchant_id"], @"Merchant id should be set to something other than 'your_merchant_id'");
 
 }
 

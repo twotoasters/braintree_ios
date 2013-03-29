@@ -9,6 +9,7 @@
 #import "SCAppDelegate.h"
 
 #import "SCViewController.h"
+#import <VenmoTouch/VenmoTouch.h>
 
 @implementation SCAppDelegate
 
@@ -23,6 +24,7 @@
     }
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    [self initVTClient];
     return YES;
 }
 
@@ -51,6 +53,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark VenmoTouch
+- (void) initVTClient {
+    if ([BT_ENVIRONMENT isEqualToString:@"sandbox"]) {
+        [[VTClient alloc] initWithMerchantID:BT_SANDBOX_MERCHANT_ID braintreePublicEncryptionKey:BT_SANDBOX_PUBLIC_ENCRYPTION_KEY]; // init sharedClient
+        
+    } else {
+        
+    }
 }
 
 @end
