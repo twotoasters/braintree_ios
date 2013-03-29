@@ -35,9 +35,33 @@
 		9C28663E17053219000C411C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2865FC1704FBDF000C411C /* CoreGraphics.framework */; };
 		9C28663F1705322F000C411C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2865FC1704FBDF000C411C /* CoreGraphics.framework */; };
 		9C2866401705362B000C411C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C28663717053135000C411C /* QuartzCore.framework */; };
+		9C28664617053C33000C411C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C28663A17053162000C411C /* UIKit.framework */; };
+		9C28664717053C33000C411C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
+		9C28664817053C33000C411C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2865FC1704FBDF000C411C /* CoreGraphics.framework */; };
+		9C28664E17053C33000C411C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C28664C17053C33000C411C /* InfoPlist.strings */; };
+		9C28665017053C33000C411C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C28664F17053C33000C411C /* main.m */; };
+		9C28665417053C33000C411C /* SCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C28665317053C33000C411C /* SCAppDelegate.m */; };
+		9C28665617053C33000C411C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C28665517053C33000C411C /* Default.png */; };
+		9C28665817053C33000C411C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C28665717053C33000C411C /* Default@2x.png */; };
+		9C28665A17053C33000C411C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C28665917053C33000C411C /* Default-568h@2x.png */; };
+		9C28665D17053C33000C411C /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C28665C17053C33000C411C /* SCViewController.m */; };
+		9C28666017053C33000C411C /* SCViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C28665E17053C33000C411C /* SCViewController_iPhone.xib */; };
+		9C28666317053C33000C411C /* SCViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C28666117053C33000C411C /* SCViewController_iPad.xib */; };
+		9C28666A17053C34000C411C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB582691704EC0000448E5C /* SenTestingKit.framework */; };
+		9C28666B17053C34000C411C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C28663A17053162000C411C /* UIKit.framework */; };
+		9C28666C17053C34000C411C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
+		9C28667417053C34000C411C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C28667217053C34000C411C /* InfoPlist.strings */; };
+		9C28667717053C34000C411C /* SampleCheckoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C28667617053C34000C411C /* SampleCheckoutTests.m */; };
+		9C28667E17053C4C000C411C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C28663717053135000C411C /* QuartzCore.framework */; };
+		9C28667F17053C4C000C411C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB583E61704F45D00448E5C /* Security.framework */; };
+		9C28668017053C4C000C411C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB582691704EC0000448E5C /* SenTestingKit.framework */; };
+		9C28668117053C50000C411C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C28663717053135000C411C /* QuartzCore.framework */; };
+		9C28668217053C50000C411C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB583E61704F45D00448E5C /* Security.framework */; };
+		9C28668317053C50000C411C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2865FC1704FBDF000C411C /* CoreGraphics.framework */; };
+		9C28668417053CB1000C411C /* VenmoTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2866341704FC70000C411C /* VenmoTouch.framework */; };
+		9C28668517053DC2000C411C /* VenmoTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2866341704FC70000C411C /* VenmoTouch.framework */; };
 		9CB582871704EC2700448E5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
 		9CB582951704EC2700448E5C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB582691704EC0000448E5C /* SenTestingKit.framework */; };
-		9CB582961704EC2700448E5C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5826B1704EC0000448E5C /* UIKit.framework */; };
 		9CB582971704EC2700448E5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
 		9CB5829A1704EC2700448E5C /* libBTEncryption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB582861704EC2700448E5C /* libBTEncryption.a */; };
 		9CB583741704F0E800448E5C /* BTAES.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB583651704F0E800448E5C /* BTAES.m */; };
@@ -69,6 +93,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9C2865B01704F995000C411C;
 			remoteInfo = BTPaymentForm;
+		};
+		9C28666D17053C34000C411C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9CB5824F1704EC0000448E5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C28664417053C33000C411C;
+			remoteInfo = SampleCheckout;
 		};
 		9CB582981704EC2700448E5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -127,9 +158,27 @@
 		9C2866341704FC70000C411C /* VenmoTouch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VenmoTouch.framework; path = "../venmo-touch/VenmoTouch.framework"; sourceTree = "<group>"; };
 		9C28663717053135000C411C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9C28663A17053162000C411C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9C28664517053C33000C411C /* SampleCheckout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleCheckout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C28664B17053C33000C411C /* SampleCheckout-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleCheckout-Info.plist"; sourceTree = "<group>"; };
+		9C28664D17053C33000C411C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C28664F17053C33000C411C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C28665117053C33000C411C /* SampleCheckout-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SampleCheckout-Prefix.pch"; sourceTree = "<group>"; };
+		9C28665217053C33000C411C /* SCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAppDelegate.h; sourceTree = "<group>"; };
+		9C28665317053C33000C411C /* SCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCAppDelegate.m; sourceTree = "<group>"; };
+		9C28665517053C33000C411C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9C28665717053C33000C411C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9C28665917053C33000C411C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9C28665B17053C33000C411C /* SCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
+		9C28665C17053C33000C411C /* SCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCViewController.m; sourceTree = "<group>"; };
+		9C28665F17053C33000C411C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SCViewController_iPhone.xib; sourceTree = "<group>"; };
+		9C28666217053C33000C411C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SCViewController_iPad.xib; sourceTree = "<group>"; };
+		9C28666917053C34000C411C /* SampleCheckoutTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleCheckoutTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C28667117053C34000C411C /* SampleCheckoutTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleCheckoutTests-Info.plist"; sourceTree = "<group>"; };
+		9C28667317053C34000C411C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C28667517053C34000C411C /* SampleCheckoutTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleCheckoutTests.h; sourceTree = "<group>"; };
+		9C28667617053C34000C411C /* SampleCheckoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleCheckoutTests.m; sourceTree = "<group>"; };
 		9CB5825A1704EC0000448E5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CB582691704EC0000448E5C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		9CB5826B1704EC0000448E5C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		9CB582861704EC2700448E5C /* libBTEncryption.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBTEncryption.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB582941704EC2700448E5C /* BTEncryptionTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTEncryptionTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CB583641704F0E800448E5C /* BTAES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTAES.h; sourceTree = "<group>"; };
@@ -190,6 +239,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9C28664217053C33000C411C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C28668517053DC2000C411C /* VenmoTouch.framework in Frameworks */,
+				9C28664617053C33000C411C /* UIKit.framework in Frameworks */,
+				9C28667E17053C4C000C411C /* QuartzCore.framework in Frameworks */,
+				9C28667F17053C4C000C411C /* Security.framework in Frameworks */,
+				9C28664717053C33000C411C /* Foundation.framework in Frameworks */,
+				9C28668017053C4C000C411C /* SenTestingKit.framework in Frameworks */,
+				9C28664817053C33000C411C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C28666517053C34000C411C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C28668417053CB1000C411C /* VenmoTouch.framework in Frameworks */,
+				9C28666B17053C34000C411C /* UIKit.framework in Frameworks */,
+				9C28668117053C50000C411C /* QuartzCore.framework in Frameworks */,
+				9C28668217053C50000C411C /* Security.framework in Frameworks */,
+				9C28666C17053C34000C411C /* Foundation.framework in Frameworks */,
+				9C28666A17053C34000C411C /* SenTestingKit.framework in Frameworks */,
+				9C28668317053C50000C411C /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CB582831704EC2700448E5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,7 +281,6 @@
 			files = (
 				9CB583E71704F45D00448E5C /* Security.framework in Frameworks */,
 				9CB582951704EC2700448E5C /* SenTestingKit.framework in Frameworks */,
-				9CB582961704EC2700448E5C /* UIKit.framework in Frameworks */,
 				9CB582971704EC2700448E5C /* Foundation.framework in Frameworks */,
 				9CB5829A1704EC2700448E5C /* libBTEncryption.a in Frameworks */,
 			);
@@ -280,11 +356,60 @@
 			name = "venmo-touch";
 			sourceTree = "<group>";
 		};
+		9C28664917053C33000C411C /* SampleCheckout */ = {
+			isa = PBXGroup;
+			children = (
+				9C28665217053C33000C411C /* SCAppDelegate.h */,
+				9C28665317053C33000C411C /* SCAppDelegate.m */,
+				9C28665B17053C33000C411C /* SCViewController.h */,
+				9C28665C17053C33000C411C /* SCViewController.m */,
+				9C28665E17053C33000C411C /* SCViewController_iPhone.xib */,
+				9C28666117053C33000C411C /* SCViewController_iPad.xib */,
+				9C28664A17053C33000C411C /* Supporting Files */,
+			);
+			path = SampleCheckout;
+			sourceTree = "<group>";
+		};
+		9C28664A17053C33000C411C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C28664B17053C33000C411C /* SampleCheckout-Info.plist */,
+				9C28664C17053C33000C411C /* InfoPlist.strings */,
+				9C28664F17053C33000C411C /* main.m */,
+				9C28665117053C33000C411C /* SampleCheckout-Prefix.pch */,
+				9C28665517053C33000C411C /* Default.png */,
+				9C28665717053C33000C411C /* Default@2x.png */,
+				9C28665917053C33000C411C /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C28666F17053C34000C411C /* SampleCheckoutTests */ = {
+			isa = PBXGroup;
+			children = (
+				9C28667517053C34000C411C /* SampleCheckoutTests.h */,
+				9C28667617053C34000C411C /* SampleCheckoutTests.m */,
+				9C28667017053C34000C411C /* Supporting Files */,
+			);
+			path = SampleCheckoutTests;
+			sourceTree = "<group>";
+		};
+		9C28667017053C34000C411C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C28667117053C34000C411C /* SampleCheckoutTests-Info.plist */,
+				9C28667217053C34000C411C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9CB5824E1704EC0000448E5C = {
 			isa = PBXGroup;
 			children = (
 				9C2865EF1704FA74000C411C /* venmo-touch */,
 				9C2865D51704F9D0000C411C /* braintree */,
+				9C28664917053C33000C411C /* SampleCheckout */,
+				9C28666F17053C34000C411C /* SampleCheckoutTests */,
 				9CB582591704EC0000448E5C /* Frameworks */,
 				9CB582581704EC0000448E5C /* Products */,
 			);
@@ -297,6 +422,8 @@
 				9CB582941704EC2700448E5C /* BTEncryptionTests.octest */,
 				9C2865B11704F995000C411C /* libBTPaymentForm.a */,
 				9C2865BF1704F995000C411C /* BTPaymentFormTests.octest */,
+				9C28664517053C33000C411C /* SampleCheckout.app */,
+				9C28666917053C34000C411C /* SampleCheckoutTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -309,7 +436,6 @@
 				9CB583E61704F45D00448E5C /* Security.framework */,
 				9CB5825A1704EC0000448E5C /* Foundation.framework */,
 				9CB582691704EC0000448E5C /* SenTestingKit.framework */,
-				9CB5826B1704EC0000448E5C /* UIKit.framework */,
 				9C2865FC1704FBDF000C411C /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
@@ -415,6 +541,42 @@
 			productReference = 9C2865BF1704F995000C411C /* BTPaymentFormTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		9C28664417053C33000C411C /* SampleCheckout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C28667817053C34000C411C /* Build configuration list for PBXNativeTarget "SampleCheckout" */;
+			buildPhases = (
+				9C28664117053C33000C411C /* Sources */,
+				9C28664217053C33000C411C /* Frameworks */,
+				9C28664317053C33000C411C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SampleCheckout;
+			productName = SampleCheckout;
+			productReference = 9C28664517053C33000C411C /* SampleCheckout.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9C28666817053C34000C411C /* SampleCheckoutTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C28667B17053C34000C411C /* Build configuration list for PBXNativeTarget "SampleCheckoutTests" */;
+			buildPhases = (
+				9C28666417053C34000C411C /* Sources */,
+				9C28666517053C34000C411C /* Frameworks */,
+				9C28666617053C34000C411C /* Resources */,
+				9C28666717053C34000C411C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C28666E17053C34000C411C /* PBXTargetDependency */,
+			);
+			name = SampleCheckoutTests;
+			productName = SampleCheckoutTests;
+			productReference = 9C28666917053C34000C411C /* SampleCheckoutTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		9CB582851704EC2700448E5C /* BTEncryption */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9CB582A41704EC2700448E5C /* Build configuration list for PBXNativeTarget "BTEncryption" */;
@@ -476,6 +638,8 @@
 				9CB582931704EC2700448E5C /* BTEncryptionTests */,
 				9C2865B01704F995000C411C /* BTPaymentForm */,
 				9C2865BE1704F995000C411C /* BTPaymentFormTests */,
+				9C28664417053C33000C411C /* SampleCheckout */,
+				9C28666817053C34000C411C /* SampleCheckoutTests */,
 			);
 		};
 /* End PBXProject section */
@@ -486,6 +650,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C2865CB1704F995000C411C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C28664317053C33000C411C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C28664E17053C33000C411C /* InfoPlist.strings in Resources */,
+				9C28665617053C33000C411C /* Default.png in Resources */,
+				9C28665817053C33000C411C /* Default@2x.png in Resources */,
+				9C28665A17053C33000C411C /* Default-568h@2x.png in Resources */,
+				9C28666017053C33000C411C /* SCViewController_iPhone.xib in Resources */,
+				9C28666317053C33000C411C /* SCViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C28666617053C34000C411C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C28667417053C34000C411C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +687,19 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 		9C2865BD1704F995000C411C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		9C28666717053C34000C411C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -557,6 +755,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9C28664117053C33000C411C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C28665017053C33000C411C /* main.m in Sources */,
+				9C28665417053C33000C411C /* SCAppDelegate.m in Sources */,
+				9C28665D17053C33000C411C /* SCViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C28666417053C34000C411C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C28667717053C34000C411C /* SampleCheckoutTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9CB582821704EC2700448E5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -598,6 +814,11 @@
 			target = 9C2865B01704F995000C411C /* BTPaymentForm */;
 			targetProxy = 9C2865C31704F995000C411C /* PBXContainerItemProxy */;
 		};
+		9C28666E17053C34000C411C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9C28664417053C33000C411C /* SampleCheckout */;
+			targetProxy = 9C28666D17053C34000C411C /* PBXContainerItemProxy */;
+		};
 		9CB582991704EC2700448E5C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9CB582851704EC2700448E5C /* BTEncryption */;
@@ -610,6 +831,38 @@
 			isa = PBXVariantGroup;
 			children = (
 				9C2865CA1704F995000C411C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9C28664C17053C33000C411C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C28664D17053C33000C411C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9C28665E17053C33000C411C /* SCViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C28665F17053C33000C411C /* en */,
+			);
+			name = SCViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		9C28666117053C33000C411C /* SCViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C28666217053C33000C411C /* en */,
+			);
+			name = SCViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		9C28667217053C34000C411C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C28667317053C34000C411C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -677,6 +930,79 @@
 				GCC_PREFIX_HEADER = "BTPaymentForm/BTPaymentForm-Prefix.pch";
 				INFOPLIST_FILE = "BTPaymentFormTests/BTPaymentFormTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		9C28667917053C34000C411C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					"\"$(SRCROOT)/../venmo-touch\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleCheckout/SampleCheckout-Prefix.pch";
+				INFOPLIST_FILE = "SampleCheckout/SampleCheckout-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9C28667A17053C34000C411C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+					"\"$(SRCROOT)/../venmo-touch\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleCheckout/SampleCheckout-Prefix.pch";
+				INFOPLIST_FILE = "SampleCheckout/SampleCheckout-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9C28667C17053C34000C411C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SampleCheckout.app/SampleCheckout";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/../venmo-touch\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleCheckout/SampleCheckout-Prefix.pch";
+				INFOPLIST_FILE = "SampleCheckoutTests/SampleCheckoutTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		9C28667D17053C34000C411C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SampleCheckout.app/SampleCheckout";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/../venmo-touch\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SampleCheckout/SampleCheckout-Prefix.pch";
+				INFOPLIST_FILE = "SampleCheckoutTests/SampleCheckoutTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -804,6 +1130,22 @@
 			buildConfigurations = (
 				9C2865D11704F995000C411C /* Debug */,
 				9C2865D21704F995000C411C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9C28667817053C34000C411C /* Build configuration list for PBXNativeTarget "SampleCheckout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C28667917053C34000C411C /* Debug */,
+				9C28667A17053C34000C411C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9C28667B17053C34000C411C /* Build configuration list for PBXNativeTarget "SampleCheckoutTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C28667C17053C34000C411C /* Debug */,
+				9C28667D17053C34000C411C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
