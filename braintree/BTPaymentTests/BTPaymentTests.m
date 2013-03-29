@@ -1,15 +1,15 @@
 //
-//  BTPaymentFormTests.m
-//  BTPaymentFormTests
+//  BTPaymentTests.m
+//  BTPaymentTests
 //
 //  Created by kortina on 3/28/13.
 //  Copyright (c) 2013 Braintree. All rights reserved.
 //
 
-#import "BTPaymentFormTests.h"
+#import "BTPaymentTests.h"
 #import "BTPaymentCardUtils.h"
 
-@implementation BTPaymentFormTests
+@implementation BTPaymentTests
 
 - (void)setUp
 {
