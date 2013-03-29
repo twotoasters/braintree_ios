@@ -283,8 +283,6 @@
 		9CB5824E1704EC0000448E5C = {
 			isa = PBXGroup;
 			children = (
-				9C28663A17053162000C411C /* UIKit.framework */,
-				9C28663717053135000C411C /* QuartzCore.framework */,
 				9C2865EF1704FA74000C411C /* venmo-touch */,
 				9C2865D51704F9D0000C411C /* braintree */,
 				9CB582591704EC0000448E5C /* Frameworks */,
@@ -306,6 +304,8 @@
 		9CB582591704EC0000448E5C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9C28663A17053162000C411C /* UIKit.framework */,
+				9C28663717053135000C411C /* QuartzCore.framework */,
 				9CB583E61704F45D00448E5C /* Security.framework */,
 				9CB5825A1704EC0000448E5C /* Foundation.framework */,
 				9CB582691704EC0000448E5C /* SenTestingKit.framework */,
