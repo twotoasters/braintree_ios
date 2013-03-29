@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9C014A451706450100A58C39 /* BraintreeResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9CB3D6E1170639440080631F /* BraintreeResources.bundle */; };
-		9C014A47170648E200A58C39 /* VDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C014A46170648E200A58C39 /* VDKResources.bundle */; };
+		9C014A491706565400A58C39 /* VenmoTouchResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C014A481706565400A58C39 /* VenmoTouchResources.bundle */; };
+		9C014A4A1706565400A58C39 /* VenmoTouchResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C014A481706565400A58C39 /* VenmoTouchResources.bundle */; };
+		9C014A4B1706565400A58C39 /* VenmoTouchResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C014A481706565400A58C39 /* VenmoTouchResources.bundle */; };
 		9C103CB01704F59B00B70304 /* BTEncryptionTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C103CAE1704F59B00B70304 /* BTEncryptionTests-Info.plist */; };
 		9C103CB11704F59B00B70304 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C103CAF1704F59B00B70304 /* InfoPlist.strings */; };
 		9C2865B21704F995000C411C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
@@ -188,7 +190,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9C014A46170648E200A58C39 /* VDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = VDKResources.bundle; sourceTree = "<group>"; };
+		9C014A481706565400A58C39 /* VenmoTouchResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VenmoTouchResources.bundle; path = "../venmo-touch/VenmoTouchResources.bundle"; sourceTree = "<group>"; };
 		9C103CAE1704F59B00B70304 /* BTEncryptionTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BTEncryptionTests-Info.plist"; path = "BTEncryptionTests/BTEncryptionTests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9C103CAF1704F59B00B70304 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = InfoPlist.strings; path = BTEncryptionTests/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		9C2865B11704F995000C411C /* libBTPayment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBTPayment.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -437,7 +439,7 @@
 		9C2865EF1704FA74000C411C /* venmo-touch */ = {
 			isa = PBXGroup;
 			children = (
-				9C014A46170648E200A58C39 /* VDKResources.bundle */,
+				9C014A481706565400A58C39 /* VenmoTouchResources.bundle */,
 				9C2866341704FC70000C411C /* VenmoTouch.framework */,
 			);
 			name = "venmo-touch";
@@ -806,6 +808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C2865CB1704F995000C411C /* InfoPlist.strings in Resources */,
+				9C014A491706565400A58C39 /* VenmoTouchResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,7 +823,7 @@
 				9C28665A17053C33000C411C /* Default-568h@2x.png in Resources */,
 				9C28666017053C33000C411C /* SCViewController_iPhone.xib in Resources */,
 				9C28666317053C33000C411C /* SCViewController_iPad.xib in Resources */,
-				9C014A47170648E200A58C39 /* VDKResources.bundle in Resources */,
+				9C014A4A1706565400A58C39 /* VenmoTouchResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,6 +833,7 @@
 			files = (
 				9C28669417054CA8000C411C /* SampleCheckoutTests-Info.plist in Resources */,
 				9C28669817054CBE000C411C /* InfoPlist.strings in Resources */,
+				9C014A4B1706565400A58C39 /* VenmoTouchResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
