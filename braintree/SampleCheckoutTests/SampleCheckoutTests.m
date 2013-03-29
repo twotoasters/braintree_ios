@@ -7,6 +7,7 @@
 //
 
 #import "SampleCheckoutTests.h"
+#import <VenmoTouch/VenmoTouchSettings.h>
 
 @implementation SampleCheckoutTests
 
@@ -26,6 +27,7 @@
 
 - (void)testExample
 {
+    NSLog(@"BT_MERCHANT_ID: %@", BT_MERCHANT_ID);
     STFail(@"Unit tests are not implemented yet in SampleCheckoutTests");
 }
 

@@ -50,16 +50,16 @@
 		9C28666A17053C34000C411C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB582691704EC0000448E5C /* SenTestingKit.framework */; };
 		9C28666B17053C34000C411C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C28663A17053162000C411C /* UIKit.framework */; };
 		9C28666C17053C34000C411C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
-		9C28667417053C34000C411C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C28667217053C34000C411C /* InfoPlist.strings */; };
-		9C28667717053C34000C411C /* SampleCheckoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C28667617053C34000C411C /* SampleCheckoutTests.m */; };
 		9C28667E17053C4C000C411C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C28663717053135000C411C /* QuartzCore.framework */; };
 		9C28667F17053C4C000C411C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB583E61704F45D00448E5C /* Security.framework */; };
-		9C28668017053C4C000C411C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB582691704EC0000448E5C /* SenTestingKit.framework */; };
 		9C28668117053C50000C411C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C28663717053135000C411C /* QuartzCore.framework */; };
 		9C28668217053C50000C411C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB583E61704F45D00448E5C /* Security.framework */; };
 		9C28668317053C50000C411C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2865FC1704FBDF000C411C /* CoreGraphics.framework */; };
 		9C28668417053CB1000C411C /* VenmoTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2866341704FC70000C411C /* VenmoTouch.framework */; };
 		9C28668517053DC2000C411C /* VenmoTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2866341704FC70000C411C /* VenmoTouch.framework */; };
+		9C28668A17054C46000C411C /* SampleCheckoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C28668917054C46000C411C /* SampleCheckoutTests.m */; };
+		9C28669417054CA8000C411C /* SampleCheckoutTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C28669317054CA8000C411C /* SampleCheckoutTests-Info.plist */; };
+		9C28669817054CBE000C411C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C28669617054CBE000C411C /* InfoPlist.strings */; };
 		9CB582871704EC2700448E5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
 		9CB582951704EC2700448E5C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB582691704EC0000448E5C /* SenTestingKit.framework */; };
 		9CB582971704EC2700448E5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
@@ -173,10 +173,10 @@
 		9C28665F17053C33000C411C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SCViewController_iPhone.xib; sourceTree = "<group>"; };
 		9C28666217053C33000C411C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SCViewController_iPad.xib; sourceTree = "<group>"; };
 		9C28666917053C34000C411C /* SampleCheckoutTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleCheckoutTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9C28667117053C34000C411C /* SampleCheckoutTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleCheckoutTests-Info.plist"; sourceTree = "<group>"; };
-		9C28667317053C34000C411C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9C28667517053C34000C411C /* SampleCheckoutTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleCheckoutTests.h; sourceTree = "<group>"; };
-		9C28667617053C34000C411C /* SampleCheckoutTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleCheckoutTests.m; sourceTree = "<group>"; };
+		9C28668817054C46000C411C /* SampleCheckoutTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleCheckoutTests.h; sourceTree = "<group>"; };
+		9C28668917054C46000C411C /* SampleCheckoutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleCheckoutTests.m; sourceTree = "<group>"; };
+		9C28669317054CA8000C411C /* SampleCheckoutTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleCheckoutTests-Info.plist"; sourceTree = "<group>"; };
+		9C28669717054CBE000C411C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		9CB5825A1704EC0000448E5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CB582691704EC0000448E5C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		9CB582861704EC2700448E5C /* libBTEncryption.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBTEncryption.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -248,7 +248,6 @@
 				9C28667E17053C4C000C411C /* QuartzCore.framework in Frameworks */,
 				9C28667F17053C4C000C411C /* Security.framework in Frameworks */,
 				9C28664717053C33000C411C /* Foundation.framework in Frameworks */,
-				9C28668017053C4C000C411C /* SenTestingKit.framework in Frameworks */,
 				9C28664817053C33000C411C /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,8 +256,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C28668417053CB1000C411C /* VenmoTouch.framework in Frameworks */,
 				9C28666B17053C34000C411C /* UIKit.framework in Frameworks */,
+				9C28668417053CB1000C411C /* VenmoTouch.framework in Frameworks */,
 				9C28668117053C50000C411C /* QuartzCore.framework in Frameworks */,
 				9C28668217053C50000C411C /* Security.framework in Frameworks */,
 				9C28666C17053C34000C411C /* Foundation.framework in Frameworks */,
@@ -387,8 +386,8 @@
 		9C28666F17053C34000C411C /* SampleCheckoutTests */ = {
 			isa = PBXGroup;
 			children = (
-				9C28667517053C34000C411C /* SampleCheckoutTests.h */,
-				9C28667617053C34000C411C /* SampleCheckoutTests.m */,
+				9C28668817054C46000C411C /* SampleCheckoutTests.h */,
+				9C28668917054C46000C411C /* SampleCheckoutTests.m */,
 				9C28667017053C34000C411C /* Supporting Files */,
 			);
 			path = SampleCheckoutTests;
@@ -397,10 +396,18 @@
 		9C28667017053C34000C411C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9C28667117053C34000C411C /* SampleCheckoutTests-Info.plist */,
-				9C28667217053C34000C411C /* InfoPlist.strings */,
+				9C28669517054CBE000C411C /* en.lproj */,
+				9C28669317054CA8000C411C /* SampleCheckoutTests-Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C28669517054CBE000C411C /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				9C28669617054CBE000C411C /* InfoPlist.strings */,
+			);
+			path = en.lproj;
 			sourceTree = "<group>";
 		};
 		9CB5824E1704EC0000448E5C = {
@@ -670,7 +677,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C28667417053C34000C411C /* InfoPlist.strings in Resources */,
+				9C28669417054CA8000C411C /* SampleCheckoutTests-Info.plist in Resources */,
+				9C28669817054CBE000C411C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,7 +777,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C28667717053C34000C411C /* SampleCheckoutTests.m in Sources */,
+				9C28668A17054C46000C411C /* SampleCheckoutTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -859,10 +867,10 @@
 			name = SCViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
-		9C28667217053C34000C411C /* InfoPlist.strings */ = {
+		9C28669617054CBE000C411C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				9C28667317053C34000C411C /* en */,
+				9C28669717054CBE000C411C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
