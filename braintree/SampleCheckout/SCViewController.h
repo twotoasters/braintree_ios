@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BTPaymentViewController.h"
 
-@interface SCViewController : UIViewController
+@interface SCViewController : UIViewController <BTPaymentViewControllerDelegate>
+
+@property (strong, nonatomic) BTPaymentViewController *paymentViewController;
 
 @end

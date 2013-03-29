@@ -60,6 +60,22 @@
 		9C28668A17054C46000C411C /* SampleCheckoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C28668917054C46000C411C /* SampleCheckoutTests.m */; };
 		9C28669417054CA8000C411C /* SampleCheckoutTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C28669317054CA8000C411C /* SampleCheckoutTests-Info.plist */; };
 		9C28669817054CBE000C411C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C28669617054CBE000C411C /* InfoPlist.strings */; };
+		9C28669917055DE9000C411C /* BTPaymentActivityOverlayView.h in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865D61704FA5F000C411C /* BTPaymentActivityOverlayView.h */; };
+		9C28669A17055DE9000C411C /* BTPaymentActivityOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865D71704FA5F000C411C /* BTPaymentActivityOverlayView.m */; };
+		9C28669B17055DE9000C411C /* BTPaymentCardType.h in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865D81704FA5F000C411C /* BTPaymentCardType.h */; };
+		9C28669C17055DE9000C411C /* BTPaymentCardType.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865D91704FA5F000C411C /* BTPaymentCardType.m */; };
+		9C28669D17055DE9000C411C /* BTPaymentCardUtils.h in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865DA1704FA5F000C411C /* BTPaymentCardUtils.h */; };
+		9C28669E17055DE9000C411C /* BTPaymentCardUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865DB1704FA5F000C411C /* BTPaymentCardUtils.m */; };
+		9C28669F17055DE9000C411C /* BTPaymentForm-Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865DC1704FA5F000C411C /* BTPaymentForm-Prefix.pch */; };
+		9C2866A017055DE9000C411C /* BTPaymentFormTextField.h in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865DD1704FA5F000C411C /* BTPaymentFormTextField.h */; };
+		9C2866A117055DE9000C411C /* BTPaymentFormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865DE1704FA5F000C411C /* BTPaymentFormTextField.m */; };
+		9C2866A217055DE9000C411C /* BTPaymentFormView.h in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865DF1704FA5F000C411C /* BTPaymentFormView.h */; };
+		9C2866A317055DE9000C411C /* BTPaymentFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865E01704FA5F000C411C /* BTPaymentFormView.m */; };
+		9C2866A417055DE9000C411C /* BTPaymentViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865E11704FA5F000C411C /* BTPaymentViewController.h */; };
+		9C2866A517055DE9000C411C /* BTPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865E21704FA5F000C411C /* BTPaymentViewController.m */; };
+		9C2866A617055DE9000C411C /* BTPaymentForm-Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = 9C2865B51704F995000C411C /* BTPaymentForm-Prefix.pch */; };
+		9C2866AB170561A2000C411C /* VDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C2866AA170561A2000C411C /* VDKResources.bundle */; };
+		9C2866AC170561A2000C411C /* VDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9C2866AA170561A2000C411C /* VDKResources.bundle */; };
 		9CB582871704EC2700448E5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
 		9CB582951704EC2700448E5C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB582691704EC0000448E5C /* SenTestingKit.framework */; };
 		9CB582971704EC2700448E5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB5825A1704EC0000448E5C /* Foundation.framework */; };
@@ -177,6 +193,7 @@
 		9C28668917054C46000C411C /* SampleCheckoutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleCheckoutTests.m; sourceTree = "<group>"; };
 		9C28669317054CA8000C411C /* SampleCheckoutTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SampleCheckoutTests-Info.plist"; sourceTree = "<group>"; };
 		9C28669717054CBE000C411C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		9C2866AA170561A2000C411C /* VDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VDKResources.bundle; path = ../VDKResources.bundle; sourceTree = "<group>"; };
 		9CB5825A1704EC0000448E5C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9CB582691704EC0000448E5C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		9CB582861704EC2700448E5C /* libBTEncryption.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBTEncryption.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -413,6 +430,7 @@
 		9CB5824E1704EC0000448E5C = {
 			isa = PBXGroup;
 			children = (
+				9C2866AA170561A2000C411C /* VDKResources.bundle */,
 				9C2865EF1704FA74000C411C /* venmo-touch */,
 				9C2865D51704F9D0000C411C /* braintree */,
 				9C28664917053C33000C411C /* SampleCheckout */,
@@ -670,6 +688,7 @@
 				9C28665A17053C33000C411C /* Default-568h@2x.png in Resources */,
 				9C28666017053C33000C411C /* SCViewController_iPhone.xib in Resources */,
 				9C28666317053C33000C411C /* SCViewController_iPad.xib in Resources */,
+				9C2866AB170561A2000C411C /* VDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +698,7 @@
 			files = (
 				9C28669417054CA8000C411C /* SampleCheckoutTests-Info.plist in Resources */,
 				9C28669817054CBE000C411C /* InfoPlist.strings in Resources */,
+				9C2866AC170561A2000C411C /* VDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -767,6 +787,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C28669917055DE9000C411C /* BTPaymentActivityOverlayView.h in Sources */,
+				9C28669A17055DE9000C411C /* BTPaymentActivityOverlayView.m in Sources */,
+				9C28669B17055DE9000C411C /* BTPaymentCardType.h in Sources */,
+				9C28669C17055DE9000C411C /* BTPaymentCardType.m in Sources */,
+				9C28669D17055DE9000C411C /* BTPaymentCardUtils.h in Sources */,
+				9C28669E17055DE9000C411C /* BTPaymentCardUtils.m in Sources */,
+				9C28669F17055DE9000C411C /* BTPaymentForm-Prefix.pch in Sources */,
+				9C2866A017055DE9000C411C /* BTPaymentFormTextField.h in Sources */,
+				9C2866A117055DE9000C411C /* BTPaymentFormTextField.m in Sources */,
+				9C2866A217055DE9000C411C /* BTPaymentFormView.h in Sources */,
+				9C2866A317055DE9000C411C /* BTPaymentFormView.m in Sources */,
+				9C2866A417055DE9000C411C /* BTPaymentViewController.h in Sources */,
+				9C2866A517055DE9000C411C /* BTPaymentViewController.m in Sources */,
+				9C2866A617055DE9000C411C /* BTPaymentForm-Prefix.pch in Sources */,
 				9C28665017053C33000C411C /* main.m in Sources */,
 				9C28665417053C33000C411C /* SCAppDelegate.m in Sources */,
 				9C28665D17053C33000C411C /* SCViewController.m in Sources */,
