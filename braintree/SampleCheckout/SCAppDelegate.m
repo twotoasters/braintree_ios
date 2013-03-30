@@ -59,13 +59,14 @@
 - (void) initVTClient {
     if ([BT_ENVIRONMENT isEqualToString:@"sandbox"]) {
         NSLog(@"sanbox environment, merchant_id %@", BT_SANDBOX_MERCHANT_ID);
-        [[VTClient alloc] initWithMerchantID:BT_SANDBOX_MERCHANT_ID braintreePublicEncryptionKey:BT_SANDBOX_PUBLIC_ENCRYPTION_KEY
-         environment:VTEnvironmentSandbox]; // init sharedClient
-        
+        [[VTClient alloc] initWithMerchantID:BT_SANDBOX_MERCHANT_ID
+                braintreePublicEncryptionKey:BT_SANDBOX_CLIENT_SIDE_ENCRYPTION_KEY
+                                 environment:VTEnvironmentSandbox]; // init sharedClient
     } else {
         NSLog(@"production environment, merchant_id %@", BT_PRODUCTION_MERCHANT_ID);
-        [[VTClient alloc] initWithMerchantID:BT_PRODUCTION_MERCHANT_ID braintreePublicEncryptionKey:BT_PRODUCTION_PUBLIC_ENCRYPTION_KEY
-         environment:VTEnvironmentProduction]; // init sharedClient
+        [[VTClient alloc] initWithMerchantID:BT_PRODUCTION_MERCHANT_ID
+                braintreePublicEncryptionKey:BT_PRODUCTION_CLIENT_SIDE_ENCRYPTION_KEY
+                                 environment:VTEnvironmentProduction]; // init sharedClient
     }
 }
 

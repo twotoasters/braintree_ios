@@ -44,11 +44,11 @@
  *
  * The app can get the "venmo_sdk_session" string in two different ways:
  *
- * 1. "[touchClient venmoSDKSession]" returns an encrypted string. It is your job to encrypt the
+ * 1. "[client venmoSDKSession]" returns an encrypted string. It is your job to encrypt the
  *    card data using the BraintreeEncryption library and then include the "venmo_sdk_session" as
  *    an additional parameter.
  *
- * 2. "[touchClient encryptedCardDataAndVenmoSDKSessionWithCardDictionary:cardInformationDictionary]"
+ * 2. "[client encryptedCardDataAndVenmoSDKSessionWithCardDictionary:cardInformationDictionary]"
  *    will accept a read-only NSDictionary of your unencrypted card values and encrypt them using 
  *    your Braintree key. Then, it will add the "venmo_sdk_session" data as an additional item
  *    in the parameters. Finally, it will return a new NSDictionary with the encrypted card
@@ -151,7 +151,7 @@ typedef enum {
 // Refreshes the Venmo SDK by deleting any payment methods on file and re-downloading payment
 // methods for that user. This will be useful, for example, if the the device has no service
 // and did not successfully download cards previously
-// (will be denoted by [touchClient liveStatus] == VTLiveStatusLoading).
+// (will be denoted by [client liveStatus] == VTLiveStatusLoading).
 // 
 // If your app is displaying any VTCardViews, they should be removed from the screen and
 // references to it should be set to nil. You do not have to edit or delete existing
@@ -177,7 +177,7 @@ typedef enum {
 // paymentMethodOptionStatus will be set to PaymentMethodOptionStatusNo or
 // PaymentMethodOptionStatusYes. You may want to implement this method if you're credit card
 // input form is visible and the client has not finished its call to check for cards. Once this
-// method fires, you can check the paymentMethodOptionStatus and render the a touch card view
+// method fires, you can check the paymentMethodOptionStatus and render the a VTCardView
 // if possible.
 - (void)client:(VTClient *)client didReceivePaymentMethodOptionStatus:(VTPaymentMethodOptionStatus)paymentMethodOptionStatus;
 
@@ -194,7 +194,7 @@ typedef enum {
 // through the Braintree gateway.
 - (void)client:(VTClient *)client approvedPaymentMethodWithCode:(NSString *)paymentMethodCode;
 
-// If a user logs out, all sessions are deleted and you should remove any touch card views.
+// If a user logs out, all sessions are deleted and you should remove any VTCardViews.
 - (void)clientDidLogout:(VTClient *)client;
 
 @end

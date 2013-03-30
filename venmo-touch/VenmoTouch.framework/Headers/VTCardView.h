@@ -14,7 +14,7 @@
  *
  * Custom public methods on VTCardView are just for styling.
  *
- * You must use [touchClient touchCardView] to alloc and init a VTCardView.
+ * You must use [client cardView] to alloc and init a VTCardView.
  * Do NOT create a VTCardView with [[VTCardView alloc] init]
  *
  * The default size of a VTCardView is 300 width x 80 height. The height can not be changed,
@@ -34,11 +34,11 @@
 @property (strong, nonatomic) UIColor *useCardButtonBorderColor;
 @property (strong, nonatomic) UIColor *useCardButtonBorderShadowColor;
 
-// Convenience method to set the width of the touch card view.
+// Convenience method to set the width of the VTCardView.
 // Width must be >= 280
 - (void)setWidth:(CGFloat)newWidth;
 
-// Convenience method to set the origin of the touch card view.
+// Convenience method to set the origin of the VTCardView.
 - (void)setOrigin:(CGPoint)origin;
 
 // Convenience method to set the corner radius of the "Use Card" button.

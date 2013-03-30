@@ -14,7 +14,7 @@
  *
  * Custom public methods on VTCheckboxView are just for styling.
  *
- * You must use [touchClient checkboxCardView] to alloc and init a VTCheckboxView.
+ * You must use [client checkboxView] to alloc and init a VTCheckboxView.
  * Do NOT create a VTCheckboxView with [[VTCheckboxView alloc] init]
  *
  * The default size of a VTCheckboxView is 300 width x 66 height. The height can not be changed,
@@ -31,13 +31,13 @@
 // changed right now right now.
 @property (strong, nonatomic) UIColor *textColor; // default is nil (text draws black)
 
-// Set the touch checkbox view's background color using the default setBackgroundColor method on UIView.
+// Set the VTCheckboxView's background color using the default setBackgroundColor method on UIView.
 
-// Convenience method to set the width of the touch checkbox view.
+// Convenience method to set the width of the VTCheckboxView.
 // Width must be >= 280
 - (void)setWidth:(CGFloat)newWidth;
 
-// Convenience method to set the origin of the touch checkbox view.
+// Convenience method to set the origin of the VTCheckboxView.
 - (void)setOrigin:(CGPoint)newOrigin;
 
 @end
