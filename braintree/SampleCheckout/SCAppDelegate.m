@@ -9,7 +9,7 @@
 #import "SCAppDelegate.h"
 
 #import "SCViewController.h"
-#import <VenmoTouch/VenmoTouch.h>
+#import <VenmoTouch/VenmoTouch.h> // Don't forget to import VenmoTouch
 
 @implementation SCAppDelegate
 
@@ -56,6 +56,8 @@
 }
 
 #pragma mark VenmoTouch
+// Initialize a VTClient with your correct merchant settings.
+// Don't forget to add some logic to toggle whether you are using Sandbox or Production merchant settings.
 - (void) initVTClient {
     if ([BT_ENVIRONMENT isEqualToString:@"sandbox"]) {
         NSLog(@"sanbox environment, merchant_id %@", BT_SANDBOX_MERCHANT_ID);

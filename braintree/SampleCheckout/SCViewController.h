@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BTPaymentViewController.h"
+#import "BTPaymentViewController.h" // Don't forget this!
 
-@interface SCViewController : UIViewController <BTPaymentViewControllerDelegate>
+@interface SCViewController : UIViewController <BTPaymentViewControllerDelegate> // Implement the BTPaymentViewControllerDelegate protocol
 
-@property (strong, nonatomic) BTPaymentViewController *paymentViewController;
+@property (strong, nonatomic) BTPaymentViewController *paymentViewController; // Create a property to reference the BTPaymentViewController we dsiplay
 
 @end

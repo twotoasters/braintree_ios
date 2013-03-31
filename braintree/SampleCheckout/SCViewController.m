@@ -8,9 +8,6 @@
 
 #import "SCViewController.h"
 
-//#define SAMPLE_CHECKOUT_BASE_URL @"http://sample-checkout.herokuapp.com"
-#define SAMPLE_CHECKOUT_BASE_URL @"http://localhost:5000"
-
 @interface SCViewController ()
 
 @end
@@ -31,6 +28,7 @@
 }
 
 #pragma mark PayButton
+// add a PayButton that will present a BTPaymentViewController when tapped
 - (void) addPayButton {
     UIButton *payButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [payButton setTitle:@"Pay" forState:UIControlStateNormal];
@@ -42,11 +40,13 @@
     payButton.frame = CGRectMake(100.0, 100.0, 120.0, 50.0);
     [self.view addSubview:payButton];
 }
+// create and present a BTPaymentViewController (that has a cancel button)
 - (void)payButtonTapped:(UIButton*)button {
     NSLog(@"payButtonTapped");
     
     self.paymentViewController =
     [BTPaymentViewController paymentViewControllerWithVenmoTouchEnabled:YES];
+    // Tell the paymentViewController to notify this ViewController by calling it's BTPaymentViewControllerDelegate methods
     self.paymentViewController.delegate = self;
     
     // Add paymentViewController to a navigation controller.
@@ -58,36 +58,61 @@
      action:@selector(dismissModalViewControllerAnimated:)]; // add the cancel button
     
     [self presentModalViewController:paymentNavigationController animated:YES];
-    
 }
 
 #pragma mark BTPaymentViewControllerDelegate
 
+// When a user types in their credit card information correctly, the BTPaymentViewController sends you
+// card details via the `didSubmitCardWithInfo` delegate method.
+//
+// NB: you receive raw, unencrypted info in the `cardInfo` dictionary, but
+// for easy PCI Compliance, you should use the `cardInfoEncrypted` dictionary
+// to securely pass data through your servers to the Braintree Gateway.
 - (void)paymentViewController:(BTPaymentViewController *)paymentViewController
         didSubmitCardWithInfo:(NSDictionary *)cardInfo
          andCardInfoEncrypted:(NSDictionary *)cardInfoEncrypted {
     NSLog(@"didSubmitCardWithInfo %@ andCardInfoEncrypted %@", cardInfo, cardInfoEncrypted);
-    [self savePaymentInfoToServer:cardInfoEncrypted];
+    [self savePaymentInfoToServer:cardInfoEncrypted]; // send card through your server to Braintree Gateway
 }
 
+// When a user adds a saved card from Venmo Touch to your app, the BTPaymentViewController sends you
+// a paymentMethodCode that you can pass through your servers to the Braintree Gateway to
+// add the full card details to your Vault.
 - (void)paymentViewController:(BTPaymentViewController *)paymentViewController
 didAuthorizeCardWithPaymentMethodCode:(NSString *)paymentMethodCode {
     NSLog(@"didAuthorizeCardWithPaymentMethodCode %@", paymentMethodCode);
-    // Instead of raw card data, you can send a dictionary of POST data of the format
+    // Create a dictionary of POST data of the format
     // {"payment_method_code": "[encrypted payment_method_code data from Venmo Touch client]"}
     NSMutableDictionary *paymentInfo = [NSMutableDictionary dictionaryWithObject:paymentMethodCode
                                                             forKey:@"venmo_sdk_payment_method_code"];
-    [self savePaymentInfoToServer:paymentInfo];
+    [self savePaymentInfoToServer:paymentInfo]; // send card through your server to Braintree Gateway
 }
 
 #pragma mark - networking
+
+// The following example code demonstrates how to pass encrypted card data through your server
+// to the Braintree Gateway. For a fully working example of how to proxy data through your server
+// to the Braintree Gateway, see
+// the braintree-ios Server Side Integration tutorial [link]
+// and the sample-checkout-heroku Github project [link]
+
+//#define SAMPLE_CHECKOUT_BASE_URL @"http://sample-checkout.herokuapp.com"
+#define SAMPLE_CHECKOUT_BASE_URL @"http://localhost:5000"
+
+// Pass card data through your server to Braintree Gateway.
+// If card data is valid and added to your Vault, display a success message, and dismiss the BTPaymentViewController.
+// If saving to your Vault fails, display an error message to the user via `BTPaymentViewController showErrorWithTitle`
+// Saving to your Vault may fail, for example when
+// * CVV verification does not pass
+// * AVS verification does not pass
+// * The card number was a valid Luhn number, but nonexistent or no longer valid
 - (void) savePaymentInfoToServer:(NSDictionary *)paymentInfo {
     NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@/card", SAMPLE_CHECKOUT_BASE_URL]];
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
-    // We need a customer id in order to save a card to the vault.
-    // Set customer_id to device id. In practice, this is probably whatever user_id your app has assigned to this user.
+    // You need a customer id in order to save a card to the vault.
+    // Here, for the sake of example, we set customer_id to device id.
+    // In practice, this is probably whatever user_id your app has assigned to this user.
     NSString *customerId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
     [paymentInfo setValue:customerId forKey:@"customer_id"];
     
@@ -102,27 +127,30 @@ didAuthorizeCardWithPaymentMethodCode:(NSString *)paymentMethodCode {
          NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:body options:kNilOptions error:&err];
          NSLog(@"saveCardToServer: paymentInfo: %@ response: %@, error: %@", paymentInfo, responseDictionary, requestError);
          
-         if ([[responseDictionary valueForKey:@"success"] isEqualToNumber:@1]) {
+         if ([[responseDictionary valueForKey:@"success"] isEqualToNumber:@1]) { // Success!
+             // Don't forget to call the cleanup method,
+             // `prepareForDismissal`, on your `BTPaymentViewController`
              [self.paymentViewController prepareForDismissal];
+             // Now you can dismiss and tell the user everything worked.
              [self dismissViewControllerAnimated:YES completion:^(void) {
                  [[[UIAlertView alloc] initWithTitle:@"Success" message:@"Saved your card!" delegate:nil
                                    cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                  
              }];
              
-         } else {
-             // we did not save correctly, so show error from server.
+         } else { // The card did not save correctly, so show the error from server with convenenience method `showErrorWithTitle`
              [self.paymentViewController showErrorWithTitle:@"Error saving your card" message:[self messageStringFromResponse:responseDictionary]];
          }
-         
-         
      }];
 }
+
+// Some boiler plate networking code below.
 
 - (NSString *) messageStringFromResponse:(NSDictionary *)responseDictionary {
     return [responseDictionary valueForKey:@"message"];
 }
 
+// Construct URL encoded POST data from a dictionary
 - (NSData *)postDataFromDictionary:(NSDictionary *)params {
     NSMutableString *data = [NSMutableString string];
     

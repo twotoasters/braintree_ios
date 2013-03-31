@@ -405,14 +405,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9C2865C61704F995000C411C /* BTPaymentFormTests */ = {
+		9C2865C61704F995000C411C /* BTPaymentTests */ = {
 			isa = PBXGroup;
 			children = (
 				9C2865CC1704F995000C411C /* BTPaymentTests.h */,
 				9C2865CD1704F995000C411C /* BTPaymentTests.m */,
 				9C2865C71704F995000C411C /* Supporting Files */,
 			);
-			name = BTPaymentFormTests;
 			path = BTPaymentTests;
 			sourceTree = "<group>";
 		};
@@ -431,7 +430,7 @@
 				9CB582881704EC2700448E5C /* BTEncryption */,
 				9CB5829B1704EC2700448E5C /* BTEncryptionTests */,
 				9C2865B31704F995000C411C /* BTPayment */,
-				9C2865C61704F995000C411C /* BTPaymentFormTests */,
+				9C2865C61704F995000C411C /* BTPaymentTests */,
 			);
 			name = braintree;
 			sourceTree = "<group>";
