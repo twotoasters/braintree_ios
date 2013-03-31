@@ -261,3 +261,4 @@ didAuthorizeCardWithPaymentMethodCode:(NSString *)paymentMethodCode {
 
 ## Server Side Integration
 
+Run the following sample server locally to test this out: https://github.com/venmo/sample-checkout-heroku
