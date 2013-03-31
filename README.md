@@ -1,5 +1,4 @@
-
-# Accpet Credit Cards and Venmo Touch Using BTPaymentViewController, iOS Tutorial
+# Accept Credit Cards and Venmo Touch Using BTPaymentViewController, iOS Tutorial
 
 Presenting `BTPaymentViewController` is the easiest way to add payments to your iOS app: if a user has cards saved with Venmo Touch, `BTPaymentViewController` shows a Use Card Button that allows the user to give you that card information with a single tap.  It also contains a `BTPaymentForm` that allows a user to type in credit card information, performs client side validation on that information, and then uses Client Side Encryption, allowing you to pass the information in a secure, PCI Compliant method through your own servers to the Braintree Gateway, so you can save the card and run transactions against it.
 
