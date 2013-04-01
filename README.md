@@ -16,7 +16,7 @@ Presenting `BTPaymentViewController` is the easiest way to add payments to your 
 
 ## Add `braintree-ios` to your Xcode Project
 
-1. Add `braintree-ios` as a submodule in your project, and then drag the `braintree-ios` folder inteo your project Navigator in Xcode. Ensure "Copy items into destination group's folder" is checked. *Do not check* any of the Targets in the "Add to targets section" -- we'll configure this manually next. [Screenshot](https://github.com/venmo/braintree-ios/blob/master/braintree/docs/assets/xcode-add-braintree-ios-to-project.png)
+1. Add `braintree-ios` as a submodule in your project, and then drag the `braintree-ios` folder into your project Navigator in Xcode. Ensure "Copy items into destination group's folder" is checked. *Do not check* any of the Targets in the "Add to targets section" -- we'll configure this manually next. [Screenshot](https://github.com/venmo/braintree-ios/blob/master/braintree/docs/assets/xcode-add-braintree-ios-to-project.png)
 1. In your App Target's "Build Phases":
     1. In "Compile Sources" add add all of the files from `BTPayment` [Screenshot]([https://github.com/venmo/braintree-ios/blob/master/braintree/docs/assets/xcode-compile-sources-add-BTPayment.png)
     1. In "Copy Bundle Resources" add `BraintreeResources.bundle` and `VenmoTouchResources.bundle` by dragging them into this section from the Project Navigator on the left [Screenshot](https://github.com/venmo/braintree-ios/blob/master/braintree/docs/assets/xcode-add-BraintreeResources-and-VenmoTouchResrouces-bundles.png)
@@ -77,7 +77,7 @@ Next, import `BTPaymentViewController.h` in your ViewController header file, imp
 
     @interface SCViewController : UIViewController <BTPaymentViewControllerDelegate> // Implement the BTPaymentViewControllerDelegate protocol
 
-    @property (strong, nonatomic) BTPaymentViewController *paymentViewController; // Create a property to reference the BTPaymentViewController we dsiplay
+    @property (strong, nonatomic) BTPaymentViewController *paymentViewController; // Create a property to reference the BTPaymentViewController we display
     //...
 
 Then, create and present a `BTPaymentViewController` to collect a user's credit card information. This sample code shows how to create a Pay button that will display a `BTPaymentViewController`:
@@ -112,7 +112,7 @@ Then, create and present a `BTPaymentViewController` to collect a user's credit 
      initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:paymentNavigationController
      action:@selector(dismissModalViewControllerAnimated:)]; // add the cancel button
     
-    [self presentModalViewController:paymentNavigationController animated:YES];
+    [self presentViewController:paymentNavigationController animated:YES completion:nil];
 }
 </code></pre>
 
