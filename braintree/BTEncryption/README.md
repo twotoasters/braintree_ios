@@ -4,28 +4,14 @@ This library is for use with [Braintree's payment gateway](http://braintreepayme
 
 ## Getting Started
 
-A drop-in static library is provided as a simple way to integrate Braintree with your iOS applications.  The Downloads section contains a pre-compiled universal arm6/arm7/i386 library.
-
-To use the static library follow these steps:
-
-1. Download and unzip the latest version of libBraintreeEncryption
-2. Add the ``BraintreeEncryption`` folder to your Xcode project
-3. Make sure the header search path includes the ``BraintreeEncryption`` folder
-4. Make sure to link against our library as well as any other frameworks you might need
-
-If instead you want to use the library from the source files then follow these steps:
-
-1. Clone this repo
-2. Right-click on the Navigation pane in XCode and 'Add Files to "MyProject..."'
-3. Select the recently cloned Braintree encryption folder
-4. Make sure that the "Copy Items Into Destination Groups Folder" option is checked, then select "Add"
+See the README steps at https://github.com/venmo/braintree-ios/ for instructions on how to add the `braintree-ios` SDK, which includes `BTEncryption`, to your Xcode project.
 
 Here's a quick example.
 
 Configure the library to use your public key.
 
 ```objc
-  BraintreeEncryption * braintree = [[BraintreeEncryption alloc]
+  BTEncryption * braintree = [[BTEncryption alloc]
       initWithPublicKey:@"YOUR_CLIENT_SIDE_PUBLIC_ENCRYPTION_KEY"];
 ```
 
@@ -80,7 +66,7 @@ extern NSString * const PUBLIC_KEY;
 ```objc
 //MainViewController.m
 #import "MainViewController.h"
-#import "BraintreeEncryption.h"
+#import "BTEncryption.h"
 #import "HTTPClient.h"
 #import "JSONKit.h"
 
@@ -116,7 +102,7 @@ NSString * const PUBLIC_KEY = @"your-client-side-encryption-key";
 }
 
 -(NSDictionary*) encryptFormData:(NSDictionary*) formData {
-  BraintreeEncryption * braintree = [[[BraintreeEncryption alloc] initWithPublicKey: PUBLIC_KEY] autorelease];
+  BTEncryption * braintree = [[[BTEncryption alloc] initWithPublicKey: PUBLIC_KEY] autorelease];
   NSMutableDictionary * encryptedParams = [[[NSMutableDictionary alloc] init] autorelease];
 
   [formData enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL * stop) {
