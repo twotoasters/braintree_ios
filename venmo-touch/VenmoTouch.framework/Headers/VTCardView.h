@@ -26,24 +26,18 @@
 
 @interface VTCardView : UIView
 
+// Convenience method to set the corner radius of the "Use Card" button.
+// Corner radius must be non-negative and no greater than 15 pixels. 0 <= cornerRadius <= 15
+// Default is 5 pixels.
+@property (nonatomic, assign) CGFloat cornerRadius;
+
 // UI customization on the "Use Card" button
 @property (strong, nonatomic) UIColor *useCardButtonBackgroundColor;
-@property (strong, nonatomic) UIColor *useCardButtonTitleColor;
-@property (strong, nonatomic) UIColor *useCardButtonTitleShadowColor;
-@property (strong, nonatomic) UIFont  *useCardButtonTitleFont;
-@property (strong, nonatomic) UIColor *useCardButtonBorderColor;
-@property (strong, nonatomic) UIColor *useCardButtonBorderShadowColor;
+@property (strong, nonatomic) UIFont  *useCardButtonTitleFont; // default is [UIFont boldSystemFontOfSize:16]
+@property (strong, nonatomic) UIFont  *infoButtonFont;         // default is [UIFont boldSystemFontOfSize:11]
 
-// Convenience method to set the width of the VTCardView.
-// Width must be >= 280
-- (void)setWidth:(CGFloat)newWidth;
-
-// Convenience method to set the origin of the VTCardView.
+// Convenience methods
+- (void)setWidth:(CGFloat)newWidth; // Width must be >= 280
 - (void)setOrigin:(CGPoint)origin;
-
-// Convenience method to set the corner radius of the "Use Card" button.
-// Corner radius must be non-negative and no greater than 15 pixels. 0 <= newCornerRadius <= 15
-// Default is 5 pixels.
-- (void)setCornerRadius:(CGFloat)newCornerRadius;
 
 @end
