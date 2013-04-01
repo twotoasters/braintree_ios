@@ -65,7 +65,14 @@
 
 // Read/Set the corner radius of the Venmo Touch views and the payment form view.
 @property (nonatomic) CGFloat cornerRadius; //default is 5
+@property (strong, nonatomic) UIColor *viewBackgroundColor;
 
+// UI customization of the Venmo Touch VTCardView
+@property (strong, nonatomic) UIColor *vtCardViewBackgroundColor;
+@property (strong, nonatomic) UIFont  *vtCardViewTitleFont;      // default is [UIFont boldSystemFontOfSize:16]
+@property (strong, nonatomic) UIFont  *vtCardViewInfoButtonFont; // default is [UIFont boldSystemFontOfSize:11]
+
+// Initializes a new BTPaymentViewController
 + (id)paymentViewControllerWithVenmoTouchEnabled:(BOOL)hasVenmoTouchEnabled;
 
 // presents an error and dismisses the loading indicator

@@ -17,6 +17,21 @@
  * methods (shown below), you may use "[VTClient sharedClient]" to return a singleton of the
  * client object.
  *
+ * The Braintree sandbox gateway environment allows for testing without using real payment details.
+ * To test Venmo Touch in your sandbox environment, init your VTClient and pass in
+ * VTEnvironmentSandbox as your testing environment.
+ *
+ * To init a VTClient, you will have to pass in your Braintree credentials: your merchantID and
+ * client-side encryption key.
+ *  1. Sandbox credentials can be found here: https://sandbox.braintreegateway.com/login
+ *  2. Production credentials are found here: https://www.braintreegateway.com/login
+ *
+ * While testing in the sandbox environment, please use your sandbox
+ * credentials. Similarly, create your VTClient and pass in VTEnvironmentSandbox as your
+ * testing environment.
+ *
+ * When you're ready to move to production, init your
+ *
  * When users manually enter a new payment method, please create and add a VTCheckboxView
  * near the form.
  *
@@ -81,26 +96,18 @@ typedef enum {
 // Before your app is enabled with Venmo Touch, you should check the VTLiveStatus status.
 // If this returns VTLiveStatusNo, you should not show any touch views. If VTLiveStatus is equal to
 // VTLiveStatusLoading, the request to download that status is nil.
-// This is new as of Version 1.0.1, please do not use VTIsLive (deprecated) anymore.
 typedef enum {
     VTLiveStatusNo,
     VTLiveStatusYes,
     VTLiveStatusLoading,
 } VTLiveStatus;
 
-// DEPRECATED in version 1.0.1 - Please use VTLiveStatus (above)
-typedef enum {
-    VTIsLiveNo,
-    VTIsLiveYes,
-    VTIsLiveLoading,
-} VTIsLive;
-
 @protocol VTClientDelegate;
 
 @interface VTClient : NSObject
 
 @property (nonatomic, retain, readonly) NSString *merchantID;
-@property (nonatomic, retain, readonly) NSString *braintreePublicEncryptionKey;
+@property (nonatomic, retain, readonly) NSString *braintreeClientSideEncryptionKey;
 @property (nonatomic, retain, readonly) NSString *versionNumber;
 @property (strong, nonatomic) id<VTClientDelegate>delegate;
 
@@ -109,12 +116,19 @@ typedef enum {
 + (VTClient *)sharedClient;
 
 // Inits a VTClient object.
-// Default Venmo SDK environment is VTEnvironmentProduction.
-- (id)initWithMerchantID:(NSString *)merchantID braintreePublicEncryptionKey:(NSString *)braintreePublicEncryptionKey;
+// Default Venmo SDK environment is VTEnvironmentProduction. To test Venmo Touch in your Braintree
+// sandbox environment, use "initWithMerchantID:braintreeClientSideEncryptionKey:environment:" below.
+//
+// Your production merchantID and braintreeCSEKey are here: https://www.braintreegateway.com/login
+- (id)initWithMerchantID:(NSString *)merchantID braintreeClientSideEncryptionKey:(NSString *)braintreeCSEKey;
 
-// Inits a VTClient object where you can specify the VTEnvironment
-- (id)initWithMerchantID:(NSString *)merchantID braintreePublicEncryptionKey:(NSString *)braintreePublicEncryptionKey
-             environment:(VTEnvironment)VTEnvironment;
+// Inits a VTClient object where you can specify the VTEnvironment. Setting the environment
+// to VTEnvironmentSandbox will allow you to test in your Braintree gateway sandbox
+// testing environment.
+//
+// Your production merchantID and braintreeCSEKey are here: https://www.braintreegateway.com/login
+// Sandbox merchantID and braintreeCSEKey are here: https://sandbox.braintreegateway.com/login
+- (id)initWithMerchantID:(NSString *)merchantID braintreeClientSideEncryptionKey:(NSString *)braintreeCSEKey environment:(VTEnvironment)VTEnvironment;
 
 // Returns the status of a user's payment methods as defined by PaymentMethodOptionStatus.
 - (VTPaymentMethodOptionStatus)paymentMethodOptionStatus;
@@ -128,14 +142,11 @@ typedef enum {
 // Default behavior is to not show a picture (can be changed dynamically).
 - (VTCardView *)cardView;
 
-// Creates a VTCardView view with a flag to show or hide the picture.
-- (VTCardView *)cardViewShowingPicture:(BOOL)showingMerchantPicture;
-
 // Returns encryptedCardForm based on a dictionary of the raw card input information.
 // You must send it to your servers and exchange it with Braintree for a payment_token.
 - (NSDictionary *)encryptedCardDataAndVenmoSDKSessionWithCardDictionary:(NSDictionary *)cardDictionary;
 
-// Returns an encrypted string using your braintreePublicEncryptionKey. You must include this string
+// Returns an encrypted string using your braintreeClientSideEncryptionKey. You must include this string
 // as an additional parameter with the key "venmo_sdk_session" when submiting a card to the
 // Braintree vault from your server.
 - (NSString *)venmoSDKSession;
@@ -144,9 +155,6 @@ typedef enum {
 // return VTLiveStatusLoading. If this returns VTLiveStatusNo or VTLiveStatusLoading,
 // VTCardView and VTCheckboxView cannot be created successfully.
 - (VTLiveStatus)liveStatus;
-
-// DEPRECATED in version 1.0.1 - Please use "- (VTLiveStatus)liveStatus;" (above)
-- (VTIsLive)isLive;
 
 // Refreshes the Venmo SDK by deleting any payment methods on file and re-downloading payment
 // methods for that user. This will be useful, for example, if the the device has no service
@@ -185,9 +193,6 @@ typedef enum {
 // delegate method will trigger, returning a VTLiveStatus flag. If your app isn't showing
 // the VTCheckboxView unless Venmo Touch is live, this is a good place to do so.
 - (void)client:(VTClient *)client didFinishLoadingLiveStatus:(VTLiveStatus)liveStatus;
-
-// DEPRECATED in version 1.0.1 - Please use "- (void)client:(VTClient *)client didFinishLoadingLiveStatus:(VTLiveStatus)liveStatus;" (above)
-- (void)client:(VTClient *)client didFinishLoadingIsLive:(VTIsLive)isLive;
 
 // After a user gives permission to use this card and answers any security questions, this delegate
 // method will fire. The paymentMethodCode return value can be used to make payments
