@@ -9,9 +9,7 @@
 #define CELL_BACKGROUND_VIEW_SHADOW_TAG 11
 #define CELL_BORDER_COLOR [[UIColor colorWithWhite:207/255.0f alpha:1] CGColor]
 
-@interface BTPaymentViewController () {
-    CGFloat _cornerRadius;
-}
+@interface BTPaymentViewController ()
 
 @property (assign, nonatomic) BOOL venmoTouchEnabled;
 @property (assign, nonatomic) BOOL hasPaymentMethods;
@@ -28,7 +26,6 @@
 
 // public
 @synthesize delegate;
-@synthesize cornerRadius = _cornerRadius;
 
 // private
 @synthesize venmoTouchEnabled;
@@ -72,8 +69,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.backgroundView = nil;
-    self.tableView.backgroundColor = [UIColor colorWithWhite:238/255.0f alpha:1];
-    _cornerRadius = 5;
+    if (!_cornerRadius) _cornerRadius = 5;
+    if (!_viewBackgroundColor) _viewBackgroundColor = [UIColor colorWithWhite:238/255.0f alpha:1];
+    self.viewBackgroundColor = _viewBackgroundColor; // Changes the display.
 
     if (self.venmoTouchEnabled) {
         Class class = NSClassFromString(@"VTClient");
@@ -101,6 +99,8 @@
         [checkboxCardView setBackgroundColor:[UIColor clearColor]];
         [checkboxCardView setTextColor:[UIColor grayColor]];
         [paymentFormFooterView addSubview:checkboxCardView];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideVTCardViewSection) name:UIApplicationWillResignActiveNotification object:nil];
     }
 
     submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -185,7 +185,7 @@
     }
 }
 
-- (void)logoutVenmoSDK {
+- (void)hideVTCardViewSection {
     if ([self.tableView numberOfSections] == 2) {
         hasPaymentMethods = NO;
         [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:0]
@@ -314,11 +314,12 @@
             cellBackgroundView.layer.shadowOffset  = CGSizeMake(0, 1);
             cellBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
-            UIView *topShadowView = [[UIView alloc] initWithFrame:CGRectMake(3, 1, cellBackgroundView.frame.size.width - 6, 1)];
+            UIView *topShadowView = [[UIView alloc] initWithFrame:CGRectMake(3, 1, cellBackgroundView.frame.size.width, 1)];
             topShadowView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             topShadowView.backgroundColor = [UIColor colorWithWhite:0 alpha:.1];
             topShadowView.tag = CELL_BACKGROUND_VIEW_SHADOW_TAG;
             [cellBackgroundView addSubview:topShadowView];
+            [self adjustCellBackgroundViewShadow];
 
             cell.backgroundView = nil;
             cell.backgroundView = cellBackgroundView;
@@ -328,10 +329,24 @@
     }
 }
 
+- (void)adjustCellBackgroundViewShadow {
+    // Set the background cell's top shadow width.
+    UIView *topShadowView = [cellBackgroundView viewWithTag:CELL_BACKGROUND_VIEW_SHADOW_TAG];
+    CGFloat topShadowBuffer = ceilf(_cornerRadius/2.0f + (_cornerRadius > 10 ? 1 : 0)); //(_cornerRadius/2 - 1)
+    CGRect topShadowFrame = CGRectMake(topShadowBuffer, 1, cellBackgroundView.frame.size.width - topShadowBuffer*2, 1);
+    topShadowView.frame = topShadowFrame;
+}
+
 - (void)setUpCardViewForCell:(UITableViewCell *)cell {
     if (!cardView) {
         cardView = [self.client cardView];
+        // Set styling defaults if they were set before cardView was initialized
+        if (_cornerRadius)                self.cardView.cornerRadius       = _cornerRadius;
+        if (_vtCardViewBackgroundColor)   self.vtCardViewBackgroundColor   = _vtCardViewBackgroundColor;
+        if (_vtCardViewTitleFont)         self.vtCardViewTitleFont         = _vtCardViewTitleFont;
+        if (_vtCardViewInfoButtonFont)    self.vtCardViewInfoButtonFont    = _vtCardViewInfoButtonFont;
     }
+    
     if (cardView && cell) {
         [cardView setOrigin:CGPointMake(0, 0)];
         [cardView setBackgroundColor:[UIColor clearColor]];
@@ -391,26 +406,43 @@
 }
 
 - (void)clientDidLogout:(VTClient *)client {
-    [self logoutVenmoSDK];
+    [self hideVTCardViewSection];
 }
 
 #pragma mark - UI Customization
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
-    if (!(0 <= cornerRadius && cornerRadius >= 15)) {
+    if (!(0 <= cornerRadius && cornerRadius <= 15)) {
         return;
     }
-    
-    _cornerRadius = cornerRadius;
-    [cardView setCornerRadius:_cornerRadius];
-    cellBackgroundView.layer.cornerRadius  =
-    submitButton.layer.cornerRadius  = _cornerRadius;
 
-    // Set the background cell's top shadow width.
-    UIView *topShadowView = [cellBackgroundView viewWithTag:CELL_BACKGROUND_VIEW_SHADOW_TAG];
-    CGFloat topShadowBuffer = ceilf(_cornerRadius/2);
-    CGRect topShadowFrame = CGRectMake(topShadowBuffer, 1, cellBackgroundView.frame.size.width - topShadowBuffer*2, 1);
-    topShadowView.frame = topShadowFrame;
+    _cornerRadius = cornerRadius;
+    cardView.cornerRadius =
+    cellBackgroundView.layer.cornerRadius  =
+    submitButton.layer.cornerRadius  =
+    _cornerRadius;
+
+    [self adjustCellBackgroundViewShadow];
+}
+
+- (void)setViewBackgroundColor:(UIColor *)color {
+    _viewBackgroundColor =
+    self.tableView.backgroundColor = color;
+}
+
+- (void)setVtCardViewBackgroundColor:(UIColor *)vtCardViewBackgroundColor {
+    _vtCardViewBackgroundColor =
+    self.cardView.useCardButtonBackgroundColor = vtCardViewBackgroundColor;
+}
+
+- (void)setVtCardViewTitleFont:(UIFont *)vtCardViewTitleFont {
+    _vtCardViewTitleFont =
+    self.cardView.useCardButtonTitleFont = vtCardViewTitleFont;
+}
+
+- (void)setVtCardViewInfoButtonFont:(UIFont *)vtCardViewInfoButtonFont {
+    _vtCardViewInfoButtonFont =
+    self.cardView.infoButtonFont = vtCardViewInfoButtonFont;
 }
 
 @end

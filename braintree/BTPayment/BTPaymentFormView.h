@@ -31,6 +31,9 @@
  *    - valid checksum in all cases)
  *    - Expiration date cannot be in past
  *    - Security code must be 4 digits for Amex, 3 digits for others
+ *
+ * BTPaymentFormView is a subclass of UIView, so you may use any methods on UIView to achieve
+ * specific styling (like backgroundColor, borderWidth, etc).
  */
 
 #import <UIKit/UIKit.h>
@@ -46,8 +49,11 @@
 @property (strong, nonatomic) BTPaymentFormTextField *zipTextField;
 @property (strong, nonatomic) id<BTPaymentFormViewDelegate>delegate;
 
+// Initializes a new BTPaymentFormView 300px X 40px
 + (BTPaymentFormView *)paymentFormView;
 
+// Checks if the payment from contains valid information of a card based on the client-side
+// validations above (luhn, exp date, security code)
 - (BOOL)hasValidCardEntry;
 
 // Returns a dictionary of the user-entered card information, omitting keys/values that are blank:
@@ -64,6 +70,9 @@
 - (NSString *)yearExpirationEntry;
 - (NSString *)cvvEntry;
 - (NSString *)zipEntry;
+
+// Convenience UI method
+- (void)setOrigin:(CGPoint)origin;
 
 @end
 

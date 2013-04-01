@@ -418,4 +418,13 @@ replacementString:(NSString *)string {
     }];
 }
 
+#pragma mark - Convenience UI methods
+
+- (void)setOrigin:(CGPoint)origin {
+    CGRect newFrame = self.frame;
+    newFrame.origin.x = origin.x;
+    newFrame.origin.y = origin.y;
+    self.frame = newFrame;
+}
+
 @end
