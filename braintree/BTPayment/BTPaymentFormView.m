@@ -69,7 +69,7 @@ static NSInteger thisYear;
         scrollView.scrollEnabled   = NO;
         [self addSubview:scrollView];
 
-        cardNumberTextField = [[BTPaymentFormTextField alloc] initWithFrame:CGRectMake(0, 0, 190, 30) delegate:self];
+        cardNumberTextField = [[BTPaymentFormTextField alloc] initWithFrame:CGRectMake(0, 0, 240, 30) delegate:self];
         cardNumberTextField.placeholder = @"1234  5678  9012  3456";
         [scrollView addSubview:cardNumberTextField];
 
