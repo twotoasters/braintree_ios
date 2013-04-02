@@ -100,7 +100,7 @@
     if (self.venmoTouchEnabled && self.client) {
         // Set up the VTCheckboxView view
         checkboxCardView = [self.client checkboxView];
-        [checkboxCardView setOrigin:CGPointMake(10, 0)];
+        [checkboxCardView setOrigin:CGPointMake(-1, 0)]; // -1 for left-side alignment
         [checkboxCardView setWidth:300];
         [checkboxCardView setBackgroundColor:[UIColor clearColor]];
         [checkboxCardView setTextColor:[UIColor grayColor]];

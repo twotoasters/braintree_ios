@@ -28,7 +28,7 @@
 
 // Convenience method to set the corner radius of the "Use Card" button.
 // Corner radius must be non-negative and no greater than 15 pixels. 0 <= cornerRadius <= 15
-// Default is 5 pixels.
+// Default is 4 pixels.
 @property (nonatomic, assign) CGFloat cornerRadius;
 
 // UI customization on the "Use Card" button

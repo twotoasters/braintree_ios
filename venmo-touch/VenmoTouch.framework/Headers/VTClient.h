@@ -111,6 +111,11 @@ typedef enum {
 @property (nonatomic, retain, readonly) NSString *versionNumber;
 @property (strong, nonatomic) id<VTClientDelegate>delegate;
 
+// A convenience method that begins your VTClient work. To refer to the underlying vtClient object,
+// use [VTClient sharedClient] below.
++ (void)startWithMerchantID:(NSString *)merchantID braintreeClientSideEncryptionKey:(NSString *)braintreeCSEKey;
++ (void)startWithMerchantID:(NSString *)merchantID braintreeClientSideEncryptionKey:(NSString *)braintreeCSEKey environment:(VTEnvironment)VTEnvironment;
+
 // A convenience method that returns a singleton of the VTClient that was created by one of
 // the custom "initWithMechantID..." functions below.
 + (VTClient *)sharedClient;
