@@ -9,7 +9,9 @@
 #define CELL_BACKGROUND_VIEW_SHADOW_TAG 11
 #define CELL_BORDER_COLOR [[UIColor colorWithWhite:207/255.0f alpha:1] CGColor]
 
-@interface BTPaymentViewController ()
+@interface BTPaymentViewController () {
+    CGFloat scrollPosition; // used to drop the scroll view during scrolling
+}
 
 @property (assign, nonatomic) BOOL venmoTouchEnabled;
 @property (assign, nonatomic) BOOL hasPaymentMethods;
@@ -85,6 +87,11 @@
         }
     }
 
+    // Create the payment form
+    self.paymentFormView = [BTPaymentFormView paymentFormView];
+    self.paymentFormView.delegate = self;
+    self.paymentFormView.backgroundColor = [UIColor clearColor];
+
     // Section footer view to display the VTCheckboxView view and manual card's submit button
     paymentFormFooterView = [[UIView alloc] initWithFrame:
                            CGRectMake(0, 0, self.view.frame.size.width,
@@ -129,6 +136,15 @@
 
     [paymentFormFooterView addSubview:submitButton];
     submitButton.enabled = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    if ((self.venmoTouchEnabled && self.client &&
+        self.client.paymentMethodOptionStatus == VTPaymentMethodOptionStatusNo)
+        || !self.venmoTouchEnabled
+        || !self.client) {
+        [paymentFormView.cardNumberTextField becomeFirstResponder];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -356,12 +372,6 @@
 }
 
 - (void)setUpPaymentFormViewForCell:(UITableViewCell *)cell {
-    if (!self.paymentFormView) {
-        self.paymentFormView = [BTPaymentFormView paymentFormView];
-        self.paymentFormView.delegate = self;
-        self.paymentFormView.backgroundColor = [UIColor clearColor];
-    }
-
     [paymentFormView removeFromSuperview];
     [cell.contentView addSubview:paymentFormView];
 }
