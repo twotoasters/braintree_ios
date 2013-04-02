@@ -10,6 +10,11 @@
 #define CELL_BACKGROUND_VIEW_SHADOW_TAG 11
 #define CELL_BORDER_COLOR [[UIColor colorWithWhite:207/255.0f alpha:1] CGColor]
 
+#define SUBMIT_BUTTON_ENABLED_OVERLAY    1337
+#define SUBMIT_BUTTON_DOWN_PRESS_OVERLAY 801
+#define SUBMIT_BUTTON_NORMAL_COLOR       [UIColor colorWithWhite:238/255.0f alpha:1]
+#define SUBMIT_BUTTON_DOWN_PRESS_COLOR   [UIColor colorWithWhite:221/255.0f alpha:1]
+
 @interface BTPaymentViewController ()
 
 @property (assign, nonatomic) BOOL venmoTouchEnabled;
@@ -119,14 +124,20 @@
     submitButton.clipsToBounds = YES;
     submitButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [submitButton setTitle:@"Submit" forState:UIControlStateNormal];
-    [submitButton setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    submitButton.titleLabel.shadowOffset = CGSizeMake(0, 1);
-    [submitButton setTitleColor:[UIColor colorWithWhite:85/255.0f alpha:1]
+    [submitButton setTitleColor:[UIColor colorWithWhite:130/255.0f alpha:1]
                        forState:UIControlStateNormal];
-    [submitButton setTitleColor:[UIColor colorWithWhite:175/255.0f alpha:1]
+    [submitButton setTitleColor:[UIColor colorWithWhite:207/255.0f alpha:1]
                        forState:UIControlStateDisabled];
     [submitButton addTarget:self action:@selector(submitCardInfo:)
            forControlEvents:UIControlEventTouchUpInside];
+
+    submitButton.backgroundColor = SUBMIT_BUTTON_NORMAL_COLOR;
+    [submitButton addTarget:self action:@selector(submitButtonTouchDown)
+           forControlEvents:UIControlEventTouchDown];
+    [submitButton addTarget:self action:@selector(submitButtonTouchDragExit)
+           forControlEvents:UIControlEventTouchDragExit];
+    [submitButton addTarget:self action:@selector(submitButtonTouchDragEnter)
+           forControlEvents:UIControlEventTouchDragEnter];
 
     UIView *topShadow = [[UIView alloc] initWithFrame:CGRectMake(0, 1, submitButton.frame.size.width, 1)];
     topShadow.backgroundColor = [UIColor colorWithWhite:1 alpha:.1];
@@ -164,6 +175,24 @@
     }
 }
 
+#pragma mark - Submit button states
+
+- (void)submitButtonTouchUpInside {
+    submitButton.backgroundColor = SUBMIT_BUTTON_NORMAL_COLOR;
+}
+
+- (void)submitButtonTouchDown {
+    submitButton.backgroundColor = SUBMIT_BUTTON_DOWN_PRESS_COLOR;
+}
+
+- (void)submitButtonTouchDragExit {
+    submitButton.backgroundColor = SUBMIT_BUTTON_NORMAL_COLOR;
+}
+
+- (void)submitButtonTouchDragEnter {
+    submitButton.backgroundColor = SUBMIT_BUTTON_DOWN_PRESS_COLOR;
+}
+
 #pragma mark - BTPaymentViewController private methods
 
 - (void)prepareForDismissal {
@@ -195,6 +224,7 @@
 
         [self.delegate paymentViewController:self didSubmitCardWithInfo:cardInfo andCardInfoEncrypted:cardInfoEncrypted];
     }
+    [self submitButtonTouchUpInside];
 }
 
 - (void)paymentMethodFound {
