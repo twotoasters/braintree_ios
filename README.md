@@ -54,12 +54,14 @@ First, in your App Delegate, import the `VenmoTouch` headers and create a `initV
         [self initVTClient];
         // other code...
     }
-    #pragma mark VenmoTouch
+
+    #pragma mark - VenmoTouch
+
     // Initialize a VTClient with your correct merchant settings.
     // Don't forget to add some logic to toggle whether you are using Sandbox or Production merchant settings.
     - (void) initVTClient {
         if ([BT_ENVIRONMENT isEqualToString:@"sandbox"]) {
-            NSLog(@"sanbox environment, merchant_id %@", BT_SANDBOX_MERCHANT_ID);
+            NSLog(@"sandbox environment, merchant_id %@", BT_SANDBOX_MERCHANT_ID);
             [[VTClient alloc] initWithMerchantID:BT_SANDBOX_MERCHANT_ID
                     braintreePublicEncryptionKey:BT_SANDBOX_CLIENT_SIDE_ENCRYPTION_KEY
                                      environment:VTEnvironmentSandbox]; // init sharedClient
@@ -83,7 +85,8 @@ Next, import `BTPaymentViewController.h` in your ViewController header file, imp
 Then, create and present a `BTPaymentViewController` to collect a user's credit card information. This sample code shows how to create a Pay button that will display a `BTPaymentViewController`:
 
 <pre><code>
-#pragma mark PayButton
+#pragma mark - PayButton
+
 // add a PayButton that will present a BTPaymentViewController when tapped
 - (void) addPayButton {
     UIButton *payButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -124,7 +127,7 @@ The `BTPaymentViewController` sends your app card info via the `BTPaymentViewCon
 The following example code demonstrates how to handle both cards added via Venmo Touch and as well as cards typed manually into the `BTPaymentForm` and encrypted with Client Side Encryption for PCI Compliance.
 
 <pre><code>
-#pragma mark BTPaymentViewControllerDelegate
+#pragma mark - BTPaymentViewControllerDelegate
 
 // When a user types in their credit card information correctly, the BTPaymentViewController sends you
 // card details via the `didSubmitCardWithInfo` delegate method.
@@ -152,7 +155,7 @@ didAuthorizeCardWithPaymentMethodCode:(NSString *)paymentMethodCode {
     [self savePaymentInfoToServer:paymentInfo]; // send card through your server to Braintree Gateway
 }
 
-#pragma mark - networking
+#pragma mark - Networking
 
 // The following example code demonstrates how to pass encrypted card data through your server
 // to the Braintree Gateway. For a fully working example of how to proxy data through your server
