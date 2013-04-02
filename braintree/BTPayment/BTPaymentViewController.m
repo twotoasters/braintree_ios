@@ -10,8 +10,6 @@
 #define CELL_BACKGROUND_VIEW_SHADOW_TAG 11
 #define CELL_BORDER_COLOR [[UIColor colorWithWhite:207/255.0f alpha:1] CGColor]
 
-#define SUBMIT_BUTTON_ENABLED_OVERLAY      1337
-#define SUBMIT_BUTTON_DOWN_PRESS_OVERLAY   801
 #define SUBMIT_BUTTON_NORMAL_COLOR         [UIColor colorWithWhite:238/255.0f alpha:1]
 #define SUBMIT_BUTTON_DOWN_PRESS_COLOR     [UIColor colorWithWhite:221/255.0f alpha:1]
 #define SUBMIT_BUTTON_NORMAL_TITLE_COLOR   [UIColor colorWithWhite:130/255.0f alpha:1]
