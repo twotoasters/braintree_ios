@@ -9,9 +9,7 @@
 #define CELL_BACKGROUND_VIEW_SHADOW_TAG 11
 #define CELL_BORDER_COLOR [[UIColor colorWithWhite:207/255.0f alpha:1] CGColor]
 
-@interface BTPaymentViewController () {
-    CGFloat scrollPosition; // used to drop the scroll view during scrolling
-}
+@interface BTPaymentViewController ()
 
 @property (assign, nonatomic) BOOL venmoTouchEnabled;
 @property (assign, nonatomic) BOOL hasPaymentMethods;
