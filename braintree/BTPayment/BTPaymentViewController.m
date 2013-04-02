@@ -10,6 +10,11 @@
 #define CELL_BACKGROUND_VIEW_SHADOW_TAG 11
 #define CELL_BORDER_COLOR [[UIColor colorWithWhite:207/255.0f alpha:1] CGColor]
 
+#define SUBMIT_BUTTON_NORMAL_COLOR         [UIColor colorWithWhite:238/255.0f alpha:1]
+#define SUBMIT_BUTTON_DOWN_PRESS_COLOR     [UIColor colorWithWhite:221/255.0f alpha:1]
+#define SUBMIT_BUTTON_NORMAL_TITLE_COLOR   [UIColor colorWithWhite:130/255.0f alpha:1]
+#define SUBMIT_BUTTON_DISABLED_TITLE_COLOR [UIColor colorWithWhite:207/255.0f alpha:1]
+
 @interface BTPaymentViewController ()
 
 @property (assign, nonatomic) BOOL venmoTouchEnabled;
@@ -112,21 +117,26 @@
     submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
     submitButton.frame = CGRectMake(10, paymentFormFooterView.frame.size.height - 50, 300, 40);
     submitButton.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    submitButton.backgroundColor = [UIColor colorWithWhite:222/255.0f alpha:1];
+    submitButton.backgroundColor = SUBMIT_BUTTON_NORMAL_COLOR;
     submitButton.layer.cornerRadius = _cornerRadius;
     submitButton.layer.borderWidth  = 1;
     submitButton.layer.borderColor  = CELL_BORDER_COLOR;
     submitButton.clipsToBounds = YES;
     submitButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [submitButton setTitle:@"Submit" forState:UIControlStateNormal];
-    [submitButton setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    submitButton.titleLabel.shadowOffset = CGSizeMake(0, 1);
-    [submitButton setTitleColor:[UIColor colorWithWhite:85/255.0f alpha:1]
+    [submitButton setTitleColor:SUBMIT_BUTTON_NORMAL_TITLE_COLOR
                        forState:UIControlStateNormal];
-    [submitButton setTitleColor:[UIColor colorWithWhite:175/255.0f alpha:1]
+    [submitButton setTitleColor:SUBMIT_BUTTON_DISABLED_TITLE_COLOR
                        forState:UIControlStateDisabled];
     [submitButton addTarget:self action:@selector(submitCardInfo:)
            forControlEvents:UIControlEventTouchUpInside];
+
+    [submitButton addTarget:self action:@selector(submitButtonTouchDown)
+           forControlEvents:UIControlEventTouchDown];
+    [submitButton addTarget:self action:@selector(submitButtonTouchDragExit)
+           forControlEvents:UIControlEventTouchDragExit];
+    [submitButton addTarget:self action:@selector(submitButtonTouchDragEnter)
+           forControlEvents:UIControlEventTouchDragEnter];
 
     UIView *topShadow = [[UIView alloc] initWithFrame:CGRectMake(0, 1, submitButton.frame.size.width, 1)];
     topShadow.backgroundColor = [UIColor colorWithWhite:1 alpha:.1];
@@ -138,6 +148,8 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    // If we know the user will have no option of seeing a VTCardView, then give firstResponder
+    // to the BTPaymentFormView.
     if ((self.venmoTouchEnabled && self.client &&
         self.client.paymentMethodOptionStatus == VTPaymentMethodOptionStatusNo)
         || !self.venmoTouchEnabled
@@ -162,6 +174,24 @@
     if (firstResponder) {
         [firstResponder resignFirstResponder];
     }
+}
+
+#pragma mark - Submit button states
+
+- (void)submitButtonTouchUpInside {
+    submitButton.backgroundColor = SUBMIT_BUTTON_NORMAL_COLOR;
+}
+
+- (void)submitButtonTouchDown {
+    submitButton.backgroundColor = SUBMIT_BUTTON_DOWN_PRESS_COLOR;
+}
+
+- (void)submitButtonTouchDragExit {
+    submitButton.backgroundColor = SUBMIT_BUTTON_NORMAL_COLOR;
+}
+
+- (void)submitButtonTouchDragEnter {
+    submitButton.backgroundColor = SUBMIT_BUTTON_DOWN_PRESS_COLOR;
 }
 
 #pragma mark - BTPaymentViewController private methods
@@ -195,6 +225,7 @@
 
         [self.delegate paymentViewController:self didSubmitCardWithInfo:cardInfo andCardInfoEncrypted:cardInfoEncrypted];
     }
+    [self submitButtonTouchUpInside];
 }
 
 - (void)paymentMethodFound {
