@@ -64,7 +64,7 @@
 @property (strong, nonatomic) VTCheckboxView *checkboxCardView;
 
 // Read/Set the corner radius of the Venmo Touch views and the payment form view.
-@property (nonatomic) CGFloat cornerRadius; //default is 5
+@property (nonatomic) CGFloat cornerRadius; //default is 4
 @property (strong, nonatomic) UIColor *viewBackgroundColor;
 
 // UI customization of the Venmo Touch VTCardView

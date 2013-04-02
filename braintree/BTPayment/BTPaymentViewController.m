@@ -2,6 +2,7 @@
 #import "BTPaymentFormView.h"
 #import "BTPaymentActivityOverlayView.h"
 
+#define BT_DEFAULT_CORNER_RADIUS 4
 #define BT_APP_COLOR [UIColor clearColor]
 #define BT_APP_TEXT_COLOR [UIColor colorWithWhite:85/255.0f alpha:1]
 
@@ -69,7 +70,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.backgroundView = nil;
-    if (!_cornerRadius) _cornerRadius = 5;
+    if (!_cornerRadius) _cornerRadius = BT_DEFAULT_CORNER_RADIUS;
     if (!_viewBackgroundColor) _viewBackgroundColor = [UIColor colorWithWhite:238/255.0f alpha:1];
     self.viewBackgroundColor = _viewBackgroundColor; // Changes the display.
 
@@ -147,6 +148,20 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - UIScrollView
+
+// Hide keyboard when the user scrolls
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    UITextField *firstResponder;
+    if ([paymentFormView.cardNumberTextField isFirstResponder]) firstResponder = paymentFormView.cardNumberTextField;
+    else if ([paymentFormView.monthYearTextField isFirstResponder]) firstResponder = paymentFormView.monthYearTextField;
+    else if ([paymentFormView.cvvTextField isFirstResponder]) firstResponder = paymentFormView.cvvTextField;
+    else if ([paymentFormView.zipTextField isFirstResponder]) firstResponder = paymentFormView.zipTextField;
+    if (firstResponder) {
+        [firstResponder resignFirstResponder];
+    }
 }
 
 #pragma mark - BTPaymentViewController private methods
