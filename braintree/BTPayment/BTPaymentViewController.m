@@ -5,22 +5,22 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define BT_DEFAULT_CORNER_RADIUS 4
-#define BT_APP_COLOR [UIColor clearColor]
-#define BT_APP_TEXT_COLOR [UIColor colorWithWhite:85/255.0f alpha:1]
+#define BT_APP_COLOR             [UIColor clearColor]
+#define BT_APP_TEXT_COLOR        [UIColor colorWithWhite:85/255.0f alpha:1]
 
-#define CELL_BACKGROUND_VIEW_TAG 10
+#define CELL_BACKGROUND_VIEW_TAG        10
 #define CELL_BACKGROUND_VIEW_SHADOW_TAG 11
-#define CELL_BORDER_COLOR [[UIColor colorWithWhite:207/255.0f alpha:1] CGColor]
+#define CELL_BORDER_COLOR               [[UIColor colorWithWhite:207/255.0f alpha:1] CGColor]
 
 #define SUBMIT_BUTTON_NORMAL_TITLE_COLOR   [UIColor colorWithWhite:130/255.0f alpha:1]
 #define SUBMIT_BUTTON_DISABLED_TITLE_COLOR [UIColor colorWithWhite:207/255.0f alpha:1]
 
-#define SUBMIT_BUTTON_NORMAL_GRADIENT_START_COLOR         [UIColor colorWithWhite:234/255.0f alpha:1]
-#define SUBMIT_BUTTON_NORMAL_GRADIENT_END_COLOR           [UIColor colorWithWhite:244/255.0f alpha:1]
-#define SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_START_COLOR     [UIColor colorWithWhite:222/255.0f alpha:1]
-#define SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_END_COLOR       [UIColor colorWithWhite:231/255.0f alpha:1]
-#define SUBMIT_BUTTON_DISABLED_GRADIENT_START_COLOR       [UIColor colorWithWhite:244/255.0f alpha:1]
-#define SUBMIT_BUTTON_DISABLED_GRADIENT_END_COLOR         [UIColor colorWithWhite:234/255.0f alpha:1]
+#define SUBMIT_BUTTON_NORMAL_GRADIENT_START_COLOR     [UIColor colorWithWhite:234/255.0f alpha:1]
+#define SUBMIT_BUTTON_NORMAL_GRADIENT_END_COLOR       [UIColor colorWithWhite:244/255.0f alpha:1]
+#define SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_START_COLOR [UIColor colorWithWhite:222/255.0f alpha:1]
+#define SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_END_COLOR   [UIColor colorWithWhite:231/255.0f alpha:1]
+#define SUBMIT_BUTTON_DISABLED_GRADIENT_START_COLOR   [UIColor colorWithWhite:244/255.0f alpha:1]
+#define SUBMIT_BUTTON_DISABLED_GRADIENT_END_COLOR     [UIColor colorWithWhite:234/255.0f alpha:1]
 
 #define SUBMIT_BUTTON_GRADIENT_FRAME CGRectMake(0, 0, submitButton.frame.size.width, submitButton.frame.size.height)
 
@@ -107,6 +107,7 @@
     // Create the payment form
     self.paymentFormView = [BTPaymentFormView paymentFormView];
     self.paymentFormView.delegate = self;
+    self.paymentFormView.requestsZip = _requestsZipInManualCardEntry;
     self.paymentFormView.backgroundColor = [UIColor clearColor];
 
     // Section footer view to display the VTCheckboxView view and manual card's submit button
@@ -484,6 +485,11 @@
 }
 
 #pragma mark - UI Customization
+
+- (void)setRequestsZipInManualCardEntry:(BOOL)requestsZipInManualCardEntry {
+    _requestsZipInManualCardEntry =
+    paymentFormView.requestsZip   = requestsZipInManualCardEntry;
+}
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
     if (!(0 <= cornerRadius && cornerRadius <= 15)) {

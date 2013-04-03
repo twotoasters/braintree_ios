@@ -82,6 +82,7 @@ static NSInteger thisYear;
         cvvTextField.placeholder = @"CVV";
         [self addSubview:cvvTextField];
 
+        _requestsZip = YES;
         zipTextField = [[BTPaymentFormTextField alloc] initWithFrame:CGRectMake(230, 5, 60, 30) delegate:self];
         zipTextField.placeholder = @"ZIP";
         [self addSubview:zipTextField];
@@ -99,9 +100,12 @@ static NSInteger thisYear;
     if (cardType &&
         [BTPaymentCardUtils isValidNumber:cardNumberTextField.text] &&
         monthYearTextField.text.length == 5 &&
-        cvvTextField.text.length == [cardType.cvvLength integerValue] &&
-        zipTextField.text.length == 5) {
-        return YES;
+        cvvTextField.text.length == [cardType.cvvLength integerValue]) {
+        // If zip is requested, ensure it's of length 5.
+        if ((_requestsZip && zipTextField.text.length == 5)
+            || !_requestsZip) {
+            return YES;
+        }
     }
 
     return NO;
@@ -331,7 +335,9 @@ replacementString:(NSString *)string {
         // Valid CVV, jump to zip field.
         text = [text stringByReplacingCharactersInRange:range withString:string];
         cvvTextField.text = text;
-        [zipTextField becomeFirstResponder];
+        if (_requestsZip) {
+            [zipTextField becomeFirstResponder];
+        }
         return NO;
     }
     
@@ -351,8 +357,10 @@ replacementString:(NSString *)string {
 
 - (void)setSecondaryTextFieldsHidden:(BOOL)hidden {
     monthYearTextField.hidden =
-    cvvTextField.hidden       =
-    zipTextField.hidden       = hidden;
+    cvvTextField.hidden       = hidden;
+
+    // Only show the zip text field if it's requested.
+    zipTextField.hidden = (_requestsZip ? hidden : YES);
 }
 
 - (BOOL)stringHasNonDigits:(NSString *)string {
@@ -417,6 +425,24 @@ replacementString:(NSString *)string {
             }];
         }
     }];
+}
+
+- (void)setRequestsZip:(BOOL)requestsZip {
+    _requestsZip = requestsZip;
+
+    if (self.zipTextField.isFirstResponder && !requestsZip) {
+        [self.zipTextField resignFirstResponder];
+    }
+
+    // Only show the zip text field now if CVV is showing and developer chose to show it.
+    self.zipTextField.hidden = !(!self.cvvTextField.hidden && requestsZip);
+
+    // Clear the zip text field if it had any text.
+    self.zipTextField.text = @"";
+
+    if ([delegate respondsToSelector:@selector(paymentFormView:didModifyCardInformationWithValidity:)]) {
+        [delegate paymentFormView:self didModifyCardInformationWithValidity:[self hasValidCardEntry]];
+    }
 }
 
 #pragma mark - Convenience UI methods

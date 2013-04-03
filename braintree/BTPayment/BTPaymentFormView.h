@@ -43,6 +43,8 @@
 
 @interface BTPaymentFormView : UIView <UITextFieldDelegate>
 
+@property (nonatomic, assign) BOOL requestsZip; // default is YES
+
 @property (strong, nonatomic) BTPaymentFormTextField *cardNumberTextField;
 @property (strong, nonatomic) BTPaymentFormTextField *monthYearTextField;
 @property (strong, nonatomic) BTPaymentFormTextField *cvvTextField;
