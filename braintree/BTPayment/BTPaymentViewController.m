@@ -139,7 +139,7 @@
     submitButton.layer.borderColor  = CELL_BORDER_COLOR;
     submitButton.clipsToBounds = YES;
     submitButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    [submitButton setTitle:@"Submit" forState:UIControlStateNormal];
+    [submitButton setTitle:@"Submit New Card" forState:UIControlStateNormal];
     [submitButton setTitleColor:SUBMIT_BUTTON_NORMAL_TITLE_COLOR
                        forState:UIControlStateNormal];
     [submitButton setTitleColor:SUBMIT_BUTTON_DISABLED_TITLE_COLOR
