@@ -193,22 +193,22 @@
 #pragma mark - Submit button states
 
 - (void)submitButtonTouchUpInside {
-    [self swapViewTo:self.normalButtonGradientView from:self.pressedButtonGradientView];
+    [self swapSubmitButtonGradientViewTo:self.normalButtonGradientView from:self.pressedButtonGradientView];
 }
 
 - (void)submitButtonTouchDown {
-    [self swapViewTo:self.pressedButtonGradientView from:self.normalButtonGradientView];
+    [self swapSubmitButtonGradientViewTo:self.pressedButtonGradientView from:self.normalButtonGradientView];
 }
 
 - (void)submitButtonTouchDragExit {
-    [self swapViewTo:self.normalButtonGradientView from:self.pressedButtonGradientView];
+    [self swapSubmitButtonGradientViewTo:self.normalButtonGradientView from:self.pressedButtonGradientView];
 }
 
 - (void)submitButtonTouchDragEnter {
-    [self swapViewTo:self.pressedButtonGradientView from:self.normalButtonGradientView];
+    [self swapSubmitButtonGradientViewTo:self.pressedButtonGradientView from:self.normalButtonGradientView];
 }
 
-- (void)swapViewTo:(UIView *)to from:(UIView *)from {
+- (void)swapSubmitButtonGradientViewTo:(UIView *)to from:(UIView *)from {
     [from removeFromSuperview];
     [submitButton addSubview:to];
     [submitButton bringSubviewToFront:submitButton.titleLabel];
@@ -555,7 +555,7 @@
         _pressedButtonGradientView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _pressedButtonGradientView.userInteractionEnabled = NO;
         CAGradientLayer *gradient = [CAGradientLayer layer];
-        gradient.frame = _pressedButtonGradientView.bounds;gi
+        gradient.frame = _pressedButtonGradientView.bounds;
         gradient.colors = @[(id)[SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_START_COLOR CGColor],
                             (id)[SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_END_COLOR CGColor]];
         [_pressedButtonGradientView.layer insertSublayer:gradient atIndex:0];
