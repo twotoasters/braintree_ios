@@ -502,6 +502,9 @@
 - (void)setCornerRadius:(CGFloat)cornerRadius {
     if (!(0 <= cornerRadius && cornerRadius <= 15)) {
         return;
+    } else if (cornerRadius == 0) {
+        // This is a hack.
+        cornerRadius = 1;
     }
 
     _cornerRadius = cornerRadius;
