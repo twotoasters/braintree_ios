@@ -55,20 +55,16 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-#pragma mark VenmoTouch
+#pragma mark - VenmoTouch
 // Initialize a VTClient with your correct merchant settings.
 // Don't forget to add some logic to toggle whether you are using Sandbox or Production merchant settings.
 - (void) initVTClient {
     if ([BT_ENVIRONMENT isEqualToString:@"sandbox"]) {
-        NSLog(@"sanbox environment, merchant_id %@", BT_SANDBOX_MERCHANT_ID);
-        [[VTClient alloc] initWithMerchantID:BT_SANDBOX_MERCHANT_ID
-                braintreePublicEncryptionKey:BT_SANDBOX_CLIENT_SIDE_ENCRYPTION_KEY
-                                 environment:VTEnvironmentSandbox]; // init sharedClient
+        NSLog(@"sandbox environment, merchant_id %@", BT_SANDBOX_MERCHANT_ID);
+        [VTClient startWithMerchantID:BT_SANDBOX_MERCHANT_ID braintreeClientSideEncryptionKey:BT_SANDBOX_CLIENT_SIDE_ENCRYPTION_KEY environment:VTEnvironmentSandbox]; // init sharedClient
     } else {
         NSLog(@"production environment, merchant_id %@", BT_PRODUCTION_MERCHANT_ID);
-        [[VTClient alloc] initWithMerchantID:BT_PRODUCTION_MERCHANT_ID
-                braintreePublicEncryptionKey:BT_PRODUCTION_CLIENT_SIDE_ENCRYPTION_KEY
-                                 environment:VTEnvironmentProduction]; // init sharedClient
+        [VTClient startWithMerchantID:BT_PRODUCTION_MERCHANT_ID braintreeClientSideEncryptionKey:BT_PRODUCTION_CLIENT_SIDE_ENCRYPTION_KEY environment:VTEnvironmentProduction]; // init sharedClient
     }
 }
 
