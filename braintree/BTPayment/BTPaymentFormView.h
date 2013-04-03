@@ -28,7 +28,7 @@
  * before the user submits the form to the server, saving slow/expensive round trips in the
  * event where a user mis-types information. Validations include:
  *    - Luhn algorithm to validate card number (15 digits for Amex, 16 digits for others, and
- *    - valid checksum in all cases)
+ *      valid checksum in all cases)
  *    - Expiration date cannot be in past
  *    - Security code must be 4 digits for Amex, 3 digits for others
  *
@@ -51,7 +51,7 @@
 @property (strong, nonatomic) BTPaymentFormTextField *zipTextField;
 @property (strong, nonatomic) id<BTPaymentFormViewDelegate>delegate;
 
-// Initializes a new BTPaymentFormView 300px X 40px
+// Initializes a new BTPaymentFormView with default size 300px X 40px
 + (BTPaymentFormView *)paymentFormView;
 
 // Checks if the payment from contains valid information of a card based on the client-side
@@ -63,7 +63,7 @@
 //    - "expiration_month"
 //    - "expiration_year"
 //    - "cvv"
-//    - "zipcode"
+//    - "zipcode" (optional)
 - (NSDictionary *)cardEntry;
 
 // Returns what the user has entered in that text field, or nil if the text field is blank/nonexistent.
@@ -73,8 +73,7 @@
 - (NSString *)cvvEntry;
 - (NSString *)zipEntry;
 
-// Convenience UI method
-- (void)setOrigin:(CGPoint)origin;
+- (void)setOrigin:(CGPoint)origin; // Convenience UI method
 
 @end
 

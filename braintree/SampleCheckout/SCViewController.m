@@ -17,50 +17,45 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
     [self addPayButton];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - PayButton
 
-#pragma mark PayButton
-// add a PayButton that will present a BTPaymentViewController when tapped
-- (void) addPayButton {
+// Add a PayButton that will present a BTPaymentViewController when tapped
+- (void)addPayButton {
     UIButton *payButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [payButton setTitle:@"Pay" forState:UIControlStateNormal];
     [payButton setEnabled:YES];
     [payButton setUserInteractionEnabled:YES];
-    [payButton addTarget: self
-                  action: @selector(payButtonTapped:)
-        forControlEvents: UIControlEventTouchDown];
-    payButton.frame = CGRectMake(100.0, 100.0, 120.0, 50.0);
+    [payButton addTarget:self action:@selector(payButtonTapped:) forControlEvents:UIControlEventTouchDown];
+    payButton.frame = CGRectMake(100, 100, 120, 50);
     [self.view addSubview:payButton];
 }
-// create and present a BTPaymentViewController (that has a cancel button)
-- (void)payButtonTapped:(UIButton*)button {
+
+// Create and present a BTPaymentViewController (that has a cancel button)
+- (void)payButtonTapped:(UIButton *)button {
     NSLog(@"payButtonTapped");
     
     self.paymentViewController =
     [BTPaymentViewController paymentViewControllerWithVenmoTouchEnabled:YES];
-    // Tell the paymentViewController to notify this ViewController by calling it's BTPaymentViewControllerDelegate methods
     self.paymentViewController.delegate = self;
     
     // Add paymentViewController to a navigation controller.
     UINavigationController *paymentNavigationController =
     [[UINavigationController alloc] initWithRootViewController:self.paymentViewController];
+
+    // Add the cancel button
     self.paymentViewController.navigationItem.leftBarButtonItem =
     [[UIBarButtonItem alloc]
      initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:paymentNavigationController
-     action:@selector(dismissModalViewControllerAnimated:)]; // add the cancel button
+     action:@selector(dismissModalViewControllerAnimated:)];
     
     [self presentModalViewController:paymentNavigationController animated:YES];
 }
 
-#pragma mark BTPaymentViewControllerDelegate
+#pragma mark - BTPaymentViewControllerDelegate
 
 // When a user types in their credit card information correctly, the BTPaymentViewController sends you
 // card details via the `didSubmitCardWithInfo` delegate method.
@@ -84,22 +79,22 @@ didAuthorizeCardWithPaymentMethodCode:(NSString *)paymentMethodCode {
     // Create a dictionary of POST data of the format
     // {"payment_method_code": "[encrypted payment_method_code data from Venmo Touch client]"}
     NSMutableDictionary *paymentInfo = [NSMutableDictionary dictionaryWithObject:paymentMethodCode
-                                                            forKey:@"venmo_sdk_payment_method_code"];
+                                                                          forKey:@"venmo_sdk_payment_method_code"];
     [self savePaymentInfoToServer:paymentInfo]; // send card through your server to Braintree Gateway
 }
 
-#pragma mark - networking
+#pragma mark - Networking
 
-// The following example code demonstrates how to pass encrypted card data through your server
-// to the Braintree Gateway. For a fully working example of how to proxy data through your server
-// to the Braintree Gateway, see
-// the braintree-ios Server Side Integration tutorial [link]
-// and the sample-checkout-heroku Github project [link]
+// The following example code demonstrates how to pass encrypted card data from the app to your
+// server (your server will then have to send it to the Braintree Gateway). For a fully working
+// example of how to proxy data through your server to the Braintree Gateway, see:
+//    1. the braintree-ios Server Side Integration tutorial [https://touch.venmo.com/server-integration-tutorial/]
+//    2. and the sample-checkout-heroku Github project [link]
 
 //#define SAMPLE_CHECKOUT_BASE_URL @"http://sample-checkout.herokuapp.com"
 #define SAMPLE_CHECKOUT_BASE_URL @"http://localhost:5000"
 
-// Pass card data through your server to Braintree Gateway.
+// Pass payment info (eg card data) from the client to your server (and then to the Braintree Gateway).
 // If card data is valid and added to your Vault, display a success message, and dismiss the BTPaymentViewController.
 // If saving to your Vault fails, display an error message to the user via `BTPaymentViewController showErrorWithTitle`
 // Saving to your Vault may fail, for example when
@@ -110,7 +105,7 @@ didAuthorizeCardWithPaymentMethodCode:(NSString *)paymentMethodCode {
     NSURL *url = [NSURL URLWithString: [NSString stringWithFormat:@"%@/card", SAMPLE_CHECKOUT_BASE_URL]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     
-    // You need a customer id in order to save a card to the vault.
+    // You need a customer id in order to save a card to the Braintree vault.
     // Here, for the sake of example, we set customer_id to device id.
     // In practice, this is probably whatever user_id your app has assigned to this user.
     NSString *customerId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
