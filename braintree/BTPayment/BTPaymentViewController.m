@@ -2,6 +2,8 @@
 #import "BTPaymentFormView.h"
 #import "BTPaymentActivityOverlayView.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #define BT_DEFAULT_CORNER_RADIUS 4
 #define BT_APP_COLOR [UIColor clearColor]
 #define BT_APP_TEXT_COLOR [UIColor colorWithWhite:85/255.0f alpha:1]
@@ -10,10 +12,15 @@
 #define CELL_BACKGROUND_VIEW_SHADOW_TAG 11
 #define CELL_BORDER_COLOR [[UIColor colorWithWhite:207/255.0f alpha:1] CGColor]
 
-#define SUBMIT_BUTTON_NORMAL_COLOR         [UIColor colorWithWhite:238/255.0f alpha:1]
-#define SUBMIT_BUTTON_DOWN_PRESS_COLOR     [UIColor colorWithWhite:221/255.0f alpha:1]
 #define SUBMIT_BUTTON_NORMAL_TITLE_COLOR   [UIColor colorWithWhite:130/255.0f alpha:1]
 #define SUBMIT_BUTTON_DISABLED_TITLE_COLOR [UIColor colorWithWhite:207/255.0f alpha:1]
+
+#define NORMAL_GRADIENT_START_COLOR         [UIColor colorWithWhite:234/255.0f alpha:1]
+#define NORMAL_GRADIENT_END_COLOR           [UIColor colorWithWhite:244/255.0f alpha:1]
+#define DOWN_PRESS_GRADIENT_START_COLOR     [UIColor colorWithWhite:222/255.0f alpha:1]
+#define DOWN_PRESS_GRADIENT_END_COLOR       [UIColor colorWithWhite:231/255.0f alpha:1]
+#define DISABLED_GRADIENT_START_COLOR       [UIColor colorWithWhite:244/255.0f alpha:1]
+#define DISABLED_GRADIENT_END_COLOR         [UIColor colorWithWhite:234/255.0f alpha:1]
 
 @interface BTPaymentViewController ()
 
@@ -25,6 +32,10 @@
 @property (strong, nonatomic) UIView *cellBackgroundView;
 @property (strong, nonatomic) UIView *paymentFormFooterView;
 @property (strong, nonatomic) UIButton *submitButton;
+
+@property (strong, nonatomic) UIView *disabledButtonGradientView;
+@property (strong, nonatomic) UIView *normalButtonGradientView;
+@property (strong, nonatomic) UIView *pressedButtonGradientView;
 
 @end
 
@@ -117,7 +128,8 @@
     submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
     submitButton.frame = CGRectMake(10, paymentFormFooterView.frame.size.height - 50, 300, 40);
     submitButton.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    submitButton.backgroundColor = SUBMIT_BUTTON_NORMAL_COLOR;
+    [submitButton addSubview:self.normalButtonGradientView];
+    [submitButton bringSubviewToFront:submitButton.titleLabel];
     submitButton.layer.cornerRadius = _cornerRadius;
     submitButton.layer.borderWidth  = 1;
     submitButton.layer.borderColor  = CELL_BORDER_COLOR;
@@ -179,19 +191,27 @@
 #pragma mark - Submit button states
 
 - (void)submitButtonTouchUpInside {
-    submitButton.backgroundColor = SUBMIT_BUTTON_NORMAL_COLOR;
+    [self.pressedButtonGradientView removeFromSuperview];
+    [submitButton addSubview:self.normalButtonGradientView];
+    [submitButton bringSubviewToFront:submitButton.titleLabel];
 }
 
 - (void)submitButtonTouchDown {
-    submitButton.backgroundColor = SUBMIT_BUTTON_DOWN_PRESS_COLOR;
+    [self.normalButtonGradientView removeFromSuperview];
+    [submitButton addSubview:self.pressedButtonGradientView];
+    [submitButton bringSubviewToFront:submitButton.titleLabel];
 }
 
 - (void)submitButtonTouchDragExit {
-    submitButton.backgroundColor = SUBMIT_BUTTON_NORMAL_COLOR;
+    [self.pressedButtonGradientView removeFromSuperview];
+    [submitButton addSubview:self.normalButtonGradientView];
+    [submitButton bringSubviewToFront:submitButton.titleLabel];
 }
 
 - (void)submitButtonTouchDragEnter {
-    submitButton.backgroundColor = SUBMIT_BUTTON_DOWN_PRESS_COLOR;
+    [self.normalButtonGradientView removeFromSuperview];
+    [submitButton addSubview:self.pressedButtonGradientView];
+    [submitButton bringSubviewToFront:submitButton.titleLabel];
 }
 
 #pragma mark - BTPaymentViewController private methods
@@ -497,6 +517,44 @@
 - (void)setVtCardViewInfoButtonFont:(UIFont *)vtCardViewInfoButtonFont {
     _vtCardViewInfoButtonFont =
     self.cardView.infoButtonFont = vtCardViewInfoButtonFont;
+}
+
+#pragma mark - UIButton Gradients
+
+- (UIView *)disabledButtonGradientView {
+    if (!_disabledButtonGradientView) {
+        _disabledButtonGradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        _disabledButtonGradientView.userInteractionEnabled = NO;
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        gradient.frame = _disabledButtonGradientView.bounds;
+        gradient.colors = @[(id)[DISABLED_GRADIENT_START_COLOR CGColor], (id)[DISABLED_GRADIENT_END_COLOR CGColor]];
+        [_disabledButtonGradientView.layer insertSublayer:gradient atIndex:0];
+    }
+    return _disabledButtonGradientView;
+}
+
+- (UIView *)normalButtonGradientView {
+    if (!_normalButtonGradientView) {
+        _normalButtonGradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        _normalButtonGradientView.userInteractionEnabled = NO;
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        gradient.frame = _normalButtonGradientView.bounds;
+        gradient.colors = @[(id)[NORMAL_GRADIENT_START_COLOR CGColor], (id)[NORMAL_GRADIENT_END_COLOR CGColor]];
+        [_normalButtonGradientView.layer insertSublayer:gradient atIndex:0];
+    }
+    return _normalButtonGradientView;
+}
+
+- (UIView *)pressedButtonGradientView {
+    if (!_pressedButtonGradientView) {
+        _pressedButtonGradientView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        _pressedButtonGradientView.userInteractionEnabled = NO;
+        CAGradientLayer *gradient = [CAGradientLayer layer];
+        gradient.frame = _pressedButtonGradientView.bounds;
+        gradient.colors = @[(id)[DOWN_PRESS_GRADIENT_START_COLOR CGColor], (id)[DOWN_PRESS_GRADIENT_END_COLOR CGColor]];
+        [_pressedButtonGradientView.layer insertSublayer:gradient atIndex:0];
+    }
+    return _pressedButtonGradientView;
 }
 
 @end
