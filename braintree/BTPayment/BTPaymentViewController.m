@@ -15,12 +15,16 @@
 #define SUBMIT_BUTTON_NORMAL_TITLE_COLOR   [UIColor colorWithWhite:130/255.0f alpha:1]
 #define SUBMIT_BUTTON_DISABLED_TITLE_COLOR [UIColor colorWithWhite:207/255.0f alpha:1]
 
-#define SUBMIT_BUTTON_NORMAL_GRADIENT_START_COLOR     [UIColor colorWithWhite:234/255.0f alpha:1]
-#define SUBMIT_BUTTON_NORMAL_GRADIENT_END_COLOR       [UIColor colorWithWhite:244/255.0f alpha:1]
-#define SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_START_COLOR [UIColor colorWithWhite:222/255.0f alpha:1]
-#define SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_END_COLOR   [UIColor colorWithWhite:231/255.0f alpha:1]
-#define SUBMIT_BUTTON_DISABLED_GRADIENT_START_COLOR   [UIColor colorWithWhite:244/255.0f alpha:1]
+#define SUBMIT_BUTTON_BORDER_DISABLED_COLOR           [UIColor colorWithWhite:194/255.0f alpha:1]
+#define SUBMIT_BUTTON_BORDER_ENABLED_COLOR            [UIColor colorWithWhite:163/255.0f alpha:1]
+
+#define SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_END_COLOR   [UIColor colorWithWhite:234/255.0f alpha:1]
+#define SUBMIT_BUTTON_DISABLED_GRADIENT_START_COLOR   [UIColor colorWithWhite:245/255.0f alpha:1]
 #define SUBMIT_BUTTON_DISABLED_GRADIENT_END_COLOR     [UIColor colorWithWhite:234/255.0f alpha:1]
+#define SUBMIT_BUTTON_NORMAL_GRADIENT_START_COLOR     [UIColor colorWithWhite:245/255.0f alpha:1]
+#define SUBMIT_BUTTON_NORMAL_GRADIENT_END_COLOR       [UIColor colorWithWhite:234/255.0f alpha:1]
+#define SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_START_COLOR [UIColor colorWithWhite:221/255.0f alpha:1]
+#define SUBMIT_BUTTON_DOWN_PRESS_GRADIENT_END_COLOR   [UIColor colorWithWhite:234/255.0f alpha:1]
 
 #define SUBMIT_BUTTON_GRADIENT_FRAME CGRectMake(0, 0, submitButton.frame.size.width, submitButton.frame.size.height)
 
@@ -136,7 +140,7 @@
     [submitButton bringSubviewToFront:submitButton.titleLabel];
     submitButton.layer.cornerRadius = _cornerRadius;
     submitButton.layer.borderWidth  = 1;
-    submitButton.layer.borderColor  = CELL_BORDER_COLOR;
+    submitButton.layer.borderColor  = [SUBMIT_BUTTON_BORDER_DISABLED_COLOR CGColor];
     submitButton.clipsToBounds = YES;
     submitButton.titleLabel.font = [UIFont boldSystemFontOfSize:18];
     [submitButton setTitle:@"Submit New Card" forState:UIControlStateNormal];
@@ -195,6 +199,7 @@
 #pragma mark - Submit button states
 
 - (void)submitButtonTouchUpInside {
+//    submitButton.layer.borderColor  = [SUBMIT_BUTTON_BORDER_DISABLED_COLOR CGColor];
     [self swapSubmitButtonGradientViewTo:self.normalButtonGradientView from:self.pressedButtonGradientView];
 }
 
@@ -290,7 +295,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     // 81 = height for VTCardView, 40 = height of enter card manually cell
-    return (hasPaymentMethods && indexPath.section == 0 ? 81 : 40);
+    return (hasPaymentMethods && indexPath.section == 0 ? 74 : 40);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -326,7 +331,8 @@
 // Don't use "tableView:titleForHeaderInSection:" because titles don't auto-update when
 // number of sections update.
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    UIView *view = [[UIView alloc] initWithFrame:
+                    CGRectMake(0, 0, 320, 40)];
     view.backgroundColor = BT_APP_COLOR;
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 280, 20)];
@@ -447,6 +453,7 @@
 
 - (void)paymentFormView:(BTPaymentFormView *)paymentFormView didModifyCardInformationWithValidity:(BOOL)isValid {
     submitButton.enabled = isValid;
+    submitButton.layer.borderColor  = (isValid ? [SUBMIT_BUTTON_BORDER_ENABLED_COLOR CGColor] : [SUBMIT_BUTTON_BORDER_DISABLED_COLOR CGColor]);
 }
 
 #pragma mark - VTClientDelegate
