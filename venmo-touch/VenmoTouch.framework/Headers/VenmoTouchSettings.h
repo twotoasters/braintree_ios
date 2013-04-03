@@ -8,11 +8,6 @@
 
 #define BT_ENVIRONMENT @"sandbox"
 
-#ifdef DEBUG
-#define BT_QA_MERCHANT_ID @"your_qa_merchant_id"
-#define BT_QA_CLIENT_SIDE_ENCRYPTION_KEY @"your_qa_client_side_encryption_key"
-#endif
-
 #define BT_SANDBOX_MERCHANT_ID @"your_sandbox_merchant_id"
 #define BT_SANDBOX_CLIENT_SIDE_ENCRYPTION_KEY @"your_sandbox_client_side_encryption_key"
 
