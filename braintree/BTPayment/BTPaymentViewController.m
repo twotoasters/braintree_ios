@@ -75,6 +75,7 @@
 
     self.title = @"Payment";
     self.venmoTouchEnabled = hasVenmoTouchEnabled;
+    _requestsZipInManualCardEntry = YES;
     return self;
 }
 
@@ -113,7 +114,7 @@
     // Section footer view to display the VTCheckboxView view and manual card's submit button
     paymentFormFooterView = [[UIView alloc] initWithFrame:
                            CGRectMake(0, 0, self.view.frame.size.width,
-                                      (self.venmoTouchEnabled && self.client ? 120 : 50))];
+                                      (self.venmoTouchEnabled && self.client ? 120 : 60))];
     paymentFormFooterView.backgroundColor = [UIColor clearColor];
 
     if (self.venmoTouchEnabled && self.client) {
