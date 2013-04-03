@@ -60,7 +60,8 @@ static NSInteger thisYear;
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         // images are 28 x 19
-        cardImageView = [[UIImageView alloc] initWithImage:[BTPaymentFormView imageWithName:@"BTGenericCard"]];
+        cardImageName = @"BTGenericCard";
+        cardImageView = [[UIImageView alloc] initWithImage:[BTPaymentFormView imageWithName:cardImageName]];
         cardImageView.frame = CGRectMake(10, 10, 28, 19);
         [self addSubview:cardImageView];
 
