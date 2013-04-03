@@ -2,13 +2,17 @@
 
 This library is for use with [Braintree's payment gateway](http://braintreepayments.com/) in concert with one of [the supported client libraries](http://braintreepayments.com/docs).  It encrypts sensitive payment information using the public key of an asymmetric key pair.
 
-## Getting Started
+## Add `braintree-ios` to your Xcode Project
 
-See the README steps at https://github.com/venmo/braintree-ios/ for instructions on how to add the `braintree-ios` SDK, which includes `BTEncryption`, to your Xcode project.
+See the README steps at https://github.com/braintree/braintree-ios/ for instructions on how to add the `braintree-ios` SDK, which includes `BTEncryption`, to your Xcode project.
 
-Here's a quick example.
+## Configuration
 
-Configure the library to use your public key.
+When Client-Side encryption is enabled for your Braintree Gateway account, a key pair is generated and you are given a specially formatted version of the public key.
+
+Retrive your client side encryption key from either https://www.braintreegateway.com/ or https://sandbox.braintreegateway.com/
+
+Configure the library to use your public key:
 
 ```objc
   BTEncryption * braintree = [[BTEncryption alloc]
@@ -23,9 +27,6 @@ NSString* encryptedValue = [braintree encryptString: @"sensitiveValue"];
 
 Because we are using asymmetric encryption, you will be unable to decrypt the data you have encrypted using your public encryption key. Only the Braintree Gateway will be able to decrypt these encrypted values.  This means that `encryptedValue` is now safe to pass through your servers to be used in the Server-to-Server API of one of our client libraries.
 
-## Retrieving your Encryption Key
-
-When Client-Side encryption is enabled for your Braintree Gateway account, a key pair is generated and you are given a specially formatted version of the public key.
 
 ## Encrypting Values from UITextFields
 
