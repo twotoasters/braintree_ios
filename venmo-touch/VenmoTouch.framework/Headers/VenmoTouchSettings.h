@@ -2,10 +2,6 @@
 #ifndef braintree_ios_VenmoTouchSettings_h
 #define braintree_ios_VenmoTouchSettings_h
 
-//#if __has_include("VenmoTouchSettings.h") // convenient place to keep private strings out of version control
-//# include "VenmoTouchSettings.h"
-//#else
-
 #define BT_ENVIRONMENT @"sandbox"
 
 #define BT_SANDBOX_MERCHANT_ID @"your_sandbox_merchant_id"
@@ -15,4 +11,3 @@
 #define BT_PRODUCTION_CLIENT_SIDE_ENCRYPTION_KEY @"your_production_client_side_encryption_key"
 
 #endif
-//#endif
