@@ -22,8 +22,8 @@ Venmo Touch is available for US customers only.
 
 * <a href="https://touch.venmo.com/braintree-ios-tutorial">Add a credit card form and Venmo Touch to your app</a>
 * <a href="https://touch.venmo.com/add-venmo-touch-tutorial">Adding Venmo Touch to an app that already accepts credit cards</a>
-* <a href="https://touch.venmo.com/testing-venmo-touch-tutorial">Testing Venmo Touch</a>
-* <a href="https://touch.venmo.com/testing-venmo-touch-tutorial">Venmo Touch Server Integration Tutorial</a>
+* <a href="https://touch.venmo.com/server-side-changes">Venmo Touch Server Integration Tutorial</a>
+* <a href="https://touch.venmo.com/integration-testing">Testing Venmo Touch</a>
 * <a href="https://touch.venmo.com/client-side-validation-tutorial">`BTPaymentForm` Client Side Validation</a>
 * <a href="https://touch.venmo.com/client-side-encryption-tutorial">`BTEncryption` Client Side Encryption</a>
 
