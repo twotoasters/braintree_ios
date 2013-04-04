@@ -58,8 +58,14 @@ static BTPaymentActivityOverlayView *sharedOverlayView = nil;
         titleLabel.shadowColor = [UIColor darkGrayColor];
         titleLabel.shadowOffset = CGSizeMake(0, 2);
         titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-        titleLabel.textAlignment = UITextAlignmentCenter;
         titleLabel.tag = 2;
+        if (([[[UIDevice currentDevice] systemVersion] compare:@"6" options:NSNumericSearch] != NSOrderedAscending)) {
+            // Is iOS 6 or higher
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+        } else {
+            titleLabel.textAlignment = UITextAlignmentCenter;
+        }
+
         [self addSubview:titleLabel];
     }
     return self;
