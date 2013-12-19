@@ -81,6 +81,12 @@
 
 - (void)setOrigin:(CGPoint)origin; // Convenience UI method
 
+/**
+ Update the text fields in the view to show correctly if data has been entered into them with out the
+ use typing it.
+ */
+- (void)formatFieldsAfterManualUpdate;
+
 @end
 
 @protocol BTPaymentFormViewDelegate <NSObject>

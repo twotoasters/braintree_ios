@@ -202,6 +202,11 @@ static NSInteger thisYear;
     return zipTextField.text;
 }
 
+- (void)formatFieldsAfterManualUpdate
+{
+    [self textField:cardNumberTextField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@""];
+}
+
 #pragma mark - UITextFieldDelegate
 
 // This class is the delegate to every text field in the payment form view. When the user
