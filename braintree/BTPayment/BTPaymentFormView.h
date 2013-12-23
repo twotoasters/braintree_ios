@@ -57,6 +57,12 @@
 @property (nonatomic, assign) CGFloat scrollOffsetGeneric;
 @property (nonatomic, assign) CGFloat scrollOffsetAmex;
 
+/**
+ Defaults to YES, which allows the credit card to be edited. If NO it does not allow credit card 
+ to be edited and you will only see last digits.
+ */
+@property (nonatomic, assign) BOOL allowCreditCardToBeEdited;
+
 // Initializes a new BTPaymentFormView with default size 300px X 40px
 + (BTPaymentFormView *)paymentFormView;
 

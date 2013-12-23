@@ -61,6 +61,7 @@ static NSInteger thisYear;
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         _UKSupportEnabled = NO;
+        _allowCreditCardToBeEdited = YES;
 
         _scrollOffsetAmex = 271.0f;
         _scrollOffsetGeneric = 300.0f;
@@ -140,7 +141,7 @@ static NSInteger thisYear;
         }
     }
 
-    return NO;
+    return !self.allowCreditCardToBeEdited;
 }
 
 - (BOOL)validateZipCode:(NSString *)zip {
@@ -205,6 +206,13 @@ static NSInteger thisYear;
 - (void)formatFieldsAfterManualUpdate
 {
     [self textField:cardNumberTextField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@""];
+}
+
+- (void)setAllowCreditCardToBeEdited:(BOOL)allowCreditCardToBeEdited
+{
+    _allowCreditCardToBeEdited = allowCreditCardToBeEdited;
+
+    self.cardNumberTextField.enabled = _allowCreditCardToBeEdited;
 }
 
 #pragma mark - UITextFieldDelegate
