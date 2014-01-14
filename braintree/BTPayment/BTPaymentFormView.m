@@ -292,7 +292,9 @@ replacementString:(NSString *)string {
     BTPaymentCardType *newCardType = [BTPaymentCardUtils cardTypeForNumber:newCardNumberRaw];
 
     // Check for errors in the potential new card number
-    if ((!newCardType && newCardNumberRaw.length > 4) ||
+    if (!self.allowCreditCardToBeEdited) {
+        // card can't be edited skip validation checks
+    } else if ((!newCardType && newCardNumberRaw.length > 4) ||
         (newCardType && [newCardType.validCardLengths containsObject:[NSNumber numberWithInteger:newCardNumberRaw.length]] &&
          ![BTPaymentCardUtils isValidNumber:newCardNumberRaw] &&
          newCardNumberRaw.length >= [newCardType.maxCardLength integerValue])) {
@@ -310,7 +312,7 @@ replacementString:(NSString *)string {
     cardNumberTextField.text = newCardNumberFormatted;
     [self changeCardImageForCardNumber:newCardNumberFormatted
                          isBackImage:NO animatedFromRight:newCardNumberRaw.length flips:YES];
-    if ([BTPaymentCardUtils isValidNumber:newCardNumberFormatted]) {
+    if (!self.allowCreditCardToBeEdited || [BTPaymentCardUtils isValidNumber:newCardNumberFormatted]) {
         // If card # is valid, give focus to MM/YY text field
         [scrollView scrollRectToVisible:
          CGRectMake((newCardType.brand == BTCardBrandAMEX ? self.scrollOffsetAmex : self.scrollOffsetGeneric), 0, 100, 30)
