@@ -1,8 +1,6 @@
 #import "BTPaymentFormView.h"
 #import "BTPaymentCardUtils.h"
 
-#define BT_GENERIC_NUMBER_SCROLL_OFFSET 300
-#define BT_AMEX_NUMBER_SCROLL_OFFSET 271
 #define BT_REGEX_POSTCODE_UK @"(GIR[ ]?0AA)|((([A-Z-[QVX]][0-9][0-9]?)|(([A-Z-[QVX]][A-Z-[IJZ]][0-9][0-9]?)|(([A-Z-[QVX]][0-9][A-HJKSTUW])|([A-Z-[QVX]][A-Z-[IJZ]][0-9][ABEHMNPRVWXY]))))[ ]?[0-9][A-Z-[CIKMOV]]{2})"
 
 #define BT_REGEX_ZIP_USA @"^[0-9][0-9][0-9][0-9][0-9]$"
@@ -63,6 +61,10 @@ static NSInteger thisYear;
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         _UKSupportEnabled = NO;
+        _allowCreditCardToBeEdited = YES;
+
+        _scrollOffsetAmex = 271.0f;
+        _scrollOffsetGeneric = 300.0f;
         
         // images are 28 x 19
         cardImageName = @"BTGenericCard";
@@ -139,7 +141,7 @@ static NSInteger thisYear;
         }
     }
 
-    return NO;
+    return !self.allowCreditCardToBeEdited;
 }
 
 - (BOOL)validateZipCode:(NSString *)zip {
@@ -186,11 +188,15 @@ static NSInteger thisYear;
 }
 
 - (NSString *)monthExpirationEntry {
-    return [monthYearTextField.text substringToIndex:2];
+    return [monthYearTextField.text substringToIndex:monthYearTextField.text.length < 2 ? monthYearTextField.text.length : 2];
 }
 
 - (NSString *)yearExpirationEntry {
-    return [NSString stringWithFormat:@"20%@", [monthYearTextField.text substringFromIndex:3]];
+    if (monthYearTextField.text.length > 3) {
+        return [NSString stringWithFormat:@"20%@", [monthYearTextField.text substringFromIndex:3]];
+    } else {
+        return nil;
+    }
 }
 
 - (NSString *)cvvEntry {
@@ -199,6 +205,18 @@ static NSInteger thisYear;
 
 - (NSString *)zipEntry {
     return zipTextField.text;
+}
+
+- (void)formatFieldsAfterManualUpdate
+{
+    [self textField:cardNumberTextField shouldChangeCharactersInRange:NSMakeRange(0, 0) replacementString:@""];
+}
+
+- (void)setAllowCreditCardToBeEdited:(BOOL)allowCreditCardToBeEdited
+{
+    _allowCreditCardToBeEdited = allowCreditCardToBeEdited;
+
+    self.cardNumberTextField.enabled = _allowCreditCardToBeEdited;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -278,7 +296,9 @@ replacementString:(NSString *)string {
     BTPaymentCardType *newCardType = [BTPaymentCardUtils cardTypeForNumber:newCardNumberRaw];
 
     // Check for errors in the potential new card number
-    if ((!newCardType && newCardNumberRaw.length > 4) ||
+    if (!self.allowCreditCardToBeEdited) {
+        // card can't be edited skip validation checks
+    } else if ((!newCardType && newCardNumberRaw.length > 4) ||
         (newCardType && [newCardType.validCardLengths containsObject:[NSNumber numberWithInteger:newCardNumberRaw.length]] &&
          ![BTPaymentCardUtils isValidNumber:newCardNumberRaw] &&
          newCardNumberRaw.length >= [newCardType.maxCardLength integerValue])) {
@@ -296,10 +316,10 @@ replacementString:(NSString *)string {
     cardNumberTextField.text = newCardNumberFormatted;
     [self changeCardImageForCardNumber:newCardNumberFormatted
                          isBackImage:NO animatedFromRight:newCardNumberRaw.length flips:YES];
-    if ([BTPaymentCardUtils isValidNumber:newCardNumberFormatted]) {
+    if (!self.allowCreditCardToBeEdited || [BTPaymentCardUtils isValidNumber:newCardNumberFormatted]) {
         // If card # is valid, give focus to MM/YY text field
         [scrollView scrollRectToVisible:
-         CGRectMake((newCardType.brand == BTCardBrandAMEX ?BT_AMEX_NUMBER_SCROLL_OFFSET : BT_GENERIC_NUMBER_SCROLL_OFFSET), 0, 100, 30)
+         CGRectMake((newCardType.brand == BTCardBrandAMEX ? self.scrollOffsetAmex : self.scrollOffsetGeneric), 0, 100, 30)
                                animated:YES];
         [monthYearTextField becomeFirstResponder];
         [self setSecondaryTextFieldsHidden:NO];

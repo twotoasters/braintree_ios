@@ -53,6 +53,16 @@
 
 @property (nonatomic) BOOL UKSupportEnabled;
 
+// Allows for changing scroll offsets if using different font
+@property (nonatomic, assign) CGFloat scrollOffsetGeneric;
+@property (nonatomic, assign) CGFloat scrollOffsetAmex;
+
+/**
+ Defaults to YES, which allows the credit card to be edited. If NO it does not allow credit card 
+ to be edited and you will only see last digits.
+ */
+@property (nonatomic, assign) BOOL allowCreditCardToBeEdited;
+
 // Initializes a new BTPaymentFormView with default size 300px X 40px
 + (BTPaymentFormView *)paymentFormView;
 
@@ -76,6 +86,12 @@
 - (NSString *)zipEntry;
 
 - (void)setOrigin:(CGPoint)origin; // Convenience UI method
+
+/**
+ Update the text fields in the view to show correctly if data has been entered into them with out the
+ use typing it.
+ */
+- (void)formatFieldsAfterManualUpdate;
 
 @end
 
