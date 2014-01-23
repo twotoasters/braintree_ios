@@ -188,11 +188,15 @@ static NSInteger thisYear;
 }
 
 - (NSString *)monthExpirationEntry {
-    return [monthYearTextField.text substringToIndex:2];
+    return [monthYearTextField.text substringToIndex:monthYearTextField.text.length < 2 ? monthYearTextField.text.length : 2];
 }
 
 - (NSString *)yearExpirationEntry {
-    return [NSString stringWithFormat:@"20%@", [monthYearTextField.text substringFromIndex:3]];
+    if (monthYearTextField.text.length > 3) {
+        return [NSString stringWithFormat:@"20%@", [monthYearTextField.text substringFromIndex:3]];
+    } else {
+        return nil;
+    }
 }
 
 - (NSString *)cvvEntry {
